@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cmath>
 #include <algorithm>
+#include <numeric>
 #include "src/ale_interface.hpp"
 #include <SDL/SDL.h> 
 
@@ -21,6 +22,23 @@ private:
     std::vector<double> hiddenLayer; // Buffer de activaciones
 
 public:
+    NeuralNetwork(const std::vector<int>& activeBytes) {
+        // Inicialización del Modelo
+        if (!loadWeights("brain.txt")) {
+            std::cerr << "[ERROR] No se pudo cargar 'brain.txt'." << std::endl;
+            SDL_Quit();
+            exit(1);
+        }
+
+        // Validación de dimensiones
+        if (getInputSize() != activeBytes.size()) {
+            std::cerr << "[FATAL] Dimension mismatch: Red(" << getInputSize()
+                      << ") != Mascara(" << activeBytes.size() << ")." << std::endl;
+            SDL_Quit();
+            exit(1);
+        }
+    }
+
     // Carga de parámetros serializados
     bool loadWeights(const std::string& filename) {
         std::ifstream file(filename);
@@ -89,19 +107,63 @@ public:
     int getInputSize() const { return inputNodes; }
 };
 
-int main(int argc, char **argv) {
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <rom_file>" << std::endl;
-        return -1;
+// --- SISTEMA DECISIONAL ---
+class DecisionSystem {
+private:
+    std::vector<NeuralNetwork> models; // Conjunto de modelos
+    std::vector<double> weights;       // Pesos asociados a cada modelo
+
+public:
+    DecisionSystem(const std::vector<int>& activeBytes, int numModels) {
+        // Inicialización de múltiples modelos
+        for (int i = 0; i < numModels; i++) {
+            models.emplace_back(activeBytes);
+            weights.push_back(1.0 / numModels); // Pesos iniciales uniformes
+        }
     }
 
+    // Predicción basada en votación ponderada
+    int predict(const std::vector<double>& inputs) {
+        std::vector<double> actionScores(models[0].getInputSize(), 0.0);
+
+        // Acumulación de predicciones ponderadas
+        for (size_t i = 0; i < models.size(); i++) {
+            int action = models[i].predict(inputs);
+            actionScores[action] += weights[i];
+        }
+
+        // Selección de la acción con mayor puntuación
+        return std::distance(actionScores.begin(),
+                             std::max_element(actionScores.begin(), actionScores.end()));
+    }
+
+    // Actualización de pesos (boosting)
+    void updateWeights(const std::vector<double>& errors) {
+        for (size_t i = 0; i < weights.size(); i++) {
+            weights[i] *= exp(-errors[i]); // Penalización basada en error
+        }
+
+        // Normalización de pesos
+        double sumWeights = std::accumulate(weights.begin(), weights.end(), 0.0);
+        for (double& weight : weights) {
+            weight /= sumWeights;
+        }
+    }
+};
+
+
+
+void runInference(const std::string& romFile) {
     // Inicialización SDL/ALE
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) return -1;
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+        std::cerr << "[ERROR] SDL Initialization failed." << std::endl;
+        return;
+    }
     ALEInterface alei;
     alei.setInt("random_seed", 123);
     alei.setBool("display_screen", true);
     alei.setBool("sound", true);
-    alei.loadROM(argv[1]);
+    alei.loadROM(romFile);
 
     // Carga de Máscara (Feature Selection)
     std::vector<int> activeBytes;
@@ -112,29 +174,17 @@ int main(int argc, char **argv) {
         maskFile.close();
         std::cout << "Mascara activa: " << activeBytes.size() << " inputs." << std::endl;
     } else {
-        for(int i=0; i<128; i++) activeBytes.push_back(i);
+        for (int i = 0; i < 128; i++) activeBytes.push_back(i);
         std::cout << "[WARN] Usando máscara default (128 bytes)." << std::endl;
     }
 
     // Inicialización del Modelo
-    NeuralNetwork brain;
-    if (!brain.loadWeights("brain.txt")) {
-        std::cerr << "[ERROR] No se pudo cargar 'brain.txt'." << std::endl;
-        return -1;
-    }
-
-    // Validación de dimensiones
-    if (brain.getInputSize() != activeBytes.size()) {
-        std::cerr << "[FATAL] Dimension mismatch: Red(" << brain.getInputSize() 
-                  << ") != Mascara(" << activeBytes.size() << ")." << std::endl;
-        return -1;
-    }
+    DecisionSystem brain(activeBytes, 1); 
 
     std::cout << "--- INFERENCIA INICIADA (ReLU/Sigmoid) ---" << std::endl;
 
     // Game Loop
     while (!alei.game_over()) {
-        
         // 1. Obtención de estado
         const ALERAM& ram = alei.getRAM();
         std::vector<double> inputs;
@@ -150,7 +200,7 @@ int main(int argc, char **argv) {
 
         // 4. Actuación
         alei.act((Action)actionIndex);
-        
+
         // SDL Events
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -160,5 +210,14 @@ int main(int argc, char **argv) {
 
     std::cout << "Sesión finalizada." << std::endl;
     SDL_Quit();
+}
+
+int main(int argc, char** argv) {
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <rom_file>" << std::endl;
+        return -1;
+    }
+
+    runInference(argv[1]);
     return 0;
 }
