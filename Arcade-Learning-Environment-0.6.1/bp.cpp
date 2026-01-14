@@ -14,6 +14,9 @@ using namespace std;
 
 // --- HIPERPARÁMETROS ---
 const double LEARNING_RATE = 0.01; 
+const double VALIDATION_SPLIT = 0.2; 
+const double WEIGHT_DECAY = 0.0001;
+const int EARLY_STOPPING_PATIENCE = 50;
 const int EPOCHS = 1000;            
 const int HIDDEN_NEURONS = 64; 
 const int OUTPUT_NEURONS = 18; 
@@ -103,15 +106,26 @@ public:
             hiddenGradients[h] = error * reluDerivative(hiddenLayer[h]); 
         }
 
-        // Actualizar Pesos
+        double lambda = WEIGHT_DECAY;
+
+        // Update Weights (Hidden -> Output)
         for(int h=0; h<hiddenNodes; h++) {
-            for(int o=0; o<outputNodes; o++) wHiddenOutput[h][o] += LEARNING_RATE * outputGradients[o] * hiddenLayer[h];
+            for(int o=0; o<outputNodes; o++) {
+                double decay = lambda * wHiddenOutput[h][o];
+                wHiddenOutput[h][o] += LEARNING_RATE * outputGradients[o] * hiddenLayer[h] - decay;
+            }
         }
+        // Update Biases (Output)
         for(int o=0; o<outputNodes; o++) bOutput[o] += LEARNING_RATE * outputGradients[o];
 
+        // Update Weights (Input -> Hidden)
         for(int i=0; i<inputNodes; i++) {
-            for(int h=0; h<hiddenNodes; h++) wInputHidden[i][h] += LEARNING_RATE * hiddenGradients[h] * inputs[i];
+            for(int h=0; h<hiddenNodes; h++) {
+                double decay = lambda * wInputHidden[i][h];
+                wInputHidden[i][h] += LEARNING_RATE * hiddenGradients[h] * inputs[i] - decay;
+            }
         }
+        // Update Biases (Hidden)
         for(int h=0; h<hiddenNodes; h++) bHidden[h] += LEARNING_RATE * hiddenGradients[h];
     }
 
@@ -244,15 +258,33 @@ int main(int argc, char** argv) {
         return -1;
     }
 
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(data.begin(), data.end(), g);
+
+    // Dividir datos en entrenamiento y validación
+    size_t validationSize = static_cast<size_t>(data.size() * VALIDATION_SPLIT);
+    vector<TrainingData> validationData(data.end() - validationSize, data.end());
+    data.resize(data.size() - validationSize);
+
+    cout << "Datos divididos: " << endl;
+    cout << " - Entrenamiento: " << data.size() << " muestras" << endl;
+    cout << " - Validación: " << validationData.size() << " muestras" << endl;
+
     NeuralNetwork nn(inputSize, HIDDEN_NEURONS, OUTPUT_NEURONS);
     cout << "Entrenando (1000 Epochs)..." << endl;
 
-    random_device rd;
-    mt19937 g(rd());
-
+    // VARIABLES FOR EARLY STOPPING
+    double bestValidationError = 1e9;
+    int patience = EARLY_STOPPING_PATIENCE;     // How many epochs before stopping
+    int patienceCounter = 0;                    // Counter for bad epochs
+    int bestEpoch = 0;                
+    
     for (int epoch = 1; epoch <= EPOCHS; ++epoch) {
+
+        // Training Phase
         shuffle(data.begin(), data.end(), g);
-        double totalError = 0.0;
+        double trainError = 0.0;
         
         for (const auto& sample : data) {
             nn.train(sample.inputs, sample.targets);
@@ -261,17 +293,54 @@ int main(int argc, char** argv) {
             vector<double> output = nn.feedForward(sample.inputs);
             for(size_t i=0; i<output.size(); i++) {
                 double diff = sample.targets[i] - output[i];
-                totalError += diff * diff;
+                trainError += diff * diff;
             }
         }
+        trainError /= data.size();
+
+        // Validation Phase
+        double valError = 0.0;
+        for (const auto& sample : validationData) {
+            vector<double> output = nn.feedForward(sample.inputs);
+            for(size_t i=0; i<output.size(); i++) {
+                double diff = sample.targets[i] - output[i];
+                valError += diff * diff;
+            }
+        }
+        valError /= validationData.size();
         
-        if (epoch % 100 == 0 || epoch == 1) {
+        // Logging
+        if (epoch % 10 == 0 || epoch == 1) {
             cout << "Epoch " << setw(4) << epoch 
-                      << " | Error Medio: " << (totalError / data.size()) << endl;
+                 << " | Train Err: " << fixed << setprecision(5) << trainError 
+                 << " | Val Err: " << valError;
+        }
+
+        // Early Stopping Check
+        if (valError < bestValidationError) {
+            // Found a better model
+            bestValidationError = valError;
+            bestEpoch = epoch;
+            patienceCounter = 0; // Reset patience
+            
+            // Save this specific model because it's the best so far
+            nn.saveWeights("brain.txt"); 
+            if (epoch % 10 == 0) cout << " [NEW BEST SAVED]";
+        } else {
+            // No improvement
+            patienceCounter++;
+            if (epoch % 10 == 0) cout << " [No improv: " << patienceCounter << "]";
+        } if (epoch % 10 == 0) cout << endl;
+
+        // Trigger Stop
+        if (patienceCounter >= patience) {
+            cout << "\nEARLY STOPPING TRIGGERED!" << endl;
+            cout << "Stopping at epoch " << epoch << " because validation error hasn't improved in " << patience << " epochs." << endl;
+            cout << "Best model was at Epoch " << bestEpoch << " with Error: " << bestValidationError << endl;
+            break;
         }
     }
 
-    nn.saveWeights("brain.txt");
-    cout << "\n[OK] Cerebro guardado en 'brain.txt'." << endl;
+    cout << "\n[DONE] Entrenamiento finalizado." << endl;
     return 0;
 }
