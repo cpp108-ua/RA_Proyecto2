@@ -1,0 +1,3638 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/home/cpc/.local/bin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.12.44-3-MANJARO - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/home/cpc/.local/bin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/bin/gmake"
+      - "/usr/local/sbin/gmake"
+      - "/usr/lib/jvm/default/bin/gmake"
+      - "/usr/bin/site_perl/gmake"
+      - "/usr/bin/vendor_perl/gmake"
+      - "/usr/bin/core_perl/gmake"
+      - "/usr/lib/rustup/bin/gmake"
+      - "/var/lib/snapd/snap/bin/gmake"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gmake"
+      - "/home/cpc/gbtelera/tools/rgbds/gmake"
+      - "/home/cpc/gbtelera/tools/scripts/gmake"
+      - "/home/cpc/.local/bin/make"
+      - "/usr/local/bin/make"
+    found: "/usr/bin/make"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:64 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "C compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "cc"
+      - "gcc"
+      - "cl"
+      - "bcc"
+      - "xlc"
+      - "icx"
+      - "clang"
+    candidate_directories:
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/home/cpc/.local/bin/cc"
+      - "/usr/local/bin/cc"
+    found: "/usr/bin/cc"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/4.1.1/CompilerIdC/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/dlltool"
+      - "/home/cpc/.local/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/lib/jvm/default/bin/dlltool"
+      - "/usr/bin/site_perl/dlltool"
+      - "/usr/bin/vendor_perl/dlltool"
+      - "/usr/bin/core_perl/dlltool"
+      - "/usr/lib/rustup/bin/dlltool"
+      - "/var/lib/snapd/snap/bin/dlltool"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/dlltool"
+      - "/home/cpc/gbtelera/tools/rgbds/dlltool"
+      - "/home/cpc/gbtelera/tools/scripts/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/cpc/.local/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/lib/jvm/default/bin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+      - "/usr/lib/rustup/bin/tapi"
+      - "/var/lib/snapd/snap/bin/tapi"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/tapi"
+      - "/home/cpc/gbtelera/tools/rgbds/tapi"
+      - "/home/cpc/gbtelera/tools/scripts/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ar-15.2"
+      - "gcc-ar-15"
+      - "gcc-ar15"
+      - "gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/gcc-ar-15.2"
+      - "/home/cpc/.local/bin/gcc-ar-15.2"
+      - "/usr/local/bin/gcc-ar-15.2"
+      - "/bin/gcc-ar-15.2"
+      - "/usr/local/sbin/gcc-ar-15.2"
+      - "/usr/lib/jvm/default/bin/gcc-ar-15.2"
+      - "/usr/bin/site_perl/gcc-ar-15.2"
+      - "/usr/bin/vendor_perl/gcc-ar-15.2"
+      - "/usr/bin/core_perl/gcc-ar-15.2"
+      - "/usr/lib/rustup/bin/gcc-ar-15.2"
+      - "/var/lib/snapd/snap/bin/gcc-ar-15.2"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar-15.2"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar-15.2"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar-15.2"
+      - "/usr/bin/gcc-ar-15"
+      - "/home/cpc/.local/bin/gcc-ar-15"
+      - "/usr/local/bin/gcc-ar-15"
+      - "/bin/gcc-ar-15"
+      - "/usr/local/sbin/gcc-ar-15"
+      - "/usr/lib/jvm/default/bin/gcc-ar-15"
+      - "/usr/bin/site_perl/gcc-ar-15"
+      - "/usr/bin/vendor_perl/gcc-ar-15"
+      - "/usr/bin/core_perl/gcc-ar-15"
+      - "/usr/lib/rustup/bin/gcc-ar-15"
+      - "/var/lib/snapd/snap/bin/gcc-ar-15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar-15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar-15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar-15"
+      - "/usr/bin/gcc-ar15"
+      - "/home/cpc/.local/bin/gcc-ar15"
+      - "/usr/local/bin/gcc-ar15"
+      - "/bin/gcc-ar15"
+      - "/usr/local/sbin/gcc-ar15"
+      - "/usr/lib/jvm/default/bin/gcc-ar15"
+      - "/usr/bin/site_perl/gcc-ar15"
+      - "/usr/bin/vendor_perl/gcc-ar15"
+      - "/usr/bin/core_perl/gcc-ar15"
+      - "/usr/lib/rustup/bin/gcc-ar15"
+      - "/var/lib/snapd/snap/bin/gcc-ar15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar15"
+    found: "/usr/bin/gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ranlib-15.2"
+      - "gcc-ranlib-15"
+      - "gcc-ranlib15"
+      - "gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/gcc-ranlib-15.2"
+      - "/home/cpc/.local/bin/gcc-ranlib-15.2"
+      - "/usr/local/bin/gcc-ranlib-15.2"
+      - "/bin/gcc-ranlib-15.2"
+      - "/usr/local/sbin/gcc-ranlib-15.2"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib-15.2"
+      - "/usr/bin/site_perl/gcc-ranlib-15.2"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15.2"
+      - "/usr/bin/core_perl/gcc-ranlib-15.2"
+      - "/usr/lib/rustup/bin/gcc-ranlib-15.2"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib-15.2"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib-15.2"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib-15.2"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib-15.2"
+      - "/usr/bin/gcc-ranlib-15"
+      - "/home/cpc/.local/bin/gcc-ranlib-15"
+      - "/usr/local/bin/gcc-ranlib-15"
+      - "/bin/gcc-ranlib-15"
+      - "/usr/local/sbin/gcc-ranlib-15"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib-15"
+      - "/usr/bin/site_perl/gcc-ranlib-15"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15"
+      - "/usr/bin/core_perl/gcc-ranlib-15"
+      - "/usr/lib/rustup/bin/gcc-ranlib-15"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib-15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib-15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib-15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib-15"
+      - "/usr/bin/gcc-ranlib15"
+      - "/home/cpc/.local/bin/gcc-ranlib15"
+      - "/usr/local/bin/gcc-ranlib15"
+      - "/bin/gcc-ranlib15"
+      - "/usr/local/sbin/gcc-ranlib15"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib15"
+      - "/usr/bin/site_perl/gcc-ranlib15"
+      - "/usr/bin/vendor_perl/gcc-ranlib15"
+      - "/usr/bin/core_perl/gcc-ranlib15"
+      - "/usr/lib/rustup/bin/gcc-ranlib15"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib15"
+    found: "/usr/bin/gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c++"
+      - "CC"
+      - "g++"
+      - "aCC"
+      - "cl"
+      - "bcc"
+      - "xlC"
+      - "icpx"
+      - "icx"
+      - "clang++"
+    candidate_directories:
+      - "/usr/bin/"
+    found: "/usr/bin/c++"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/4.1.1/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ar-15.2"
+      - "gcc-ar-15"
+      - "gcc-ar15"
+      - "gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/gcc-ar-15.2"
+      - "/home/cpc/.local/bin/gcc-ar-15.2"
+      - "/usr/local/bin/gcc-ar-15.2"
+      - "/bin/gcc-ar-15.2"
+      - "/usr/local/sbin/gcc-ar-15.2"
+      - "/usr/lib/jvm/default/bin/gcc-ar-15.2"
+      - "/usr/bin/site_perl/gcc-ar-15.2"
+      - "/usr/bin/vendor_perl/gcc-ar-15.2"
+      - "/usr/bin/core_perl/gcc-ar-15.2"
+      - "/usr/lib/rustup/bin/gcc-ar-15.2"
+      - "/var/lib/snapd/snap/bin/gcc-ar-15.2"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar-15.2"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar-15.2"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar-15.2"
+      - "/usr/bin/gcc-ar-15"
+      - "/home/cpc/.local/bin/gcc-ar-15"
+      - "/usr/local/bin/gcc-ar-15"
+      - "/bin/gcc-ar-15"
+      - "/usr/local/sbin/gcc-ar-15"
+      - "/usr/lib/jvm/default/bin/gcc-ar-15"
+      - "/usr/bin/site_perl/gcc-ar-15"
+      - "/usr/bin/vendor_perl/gcc-ar-15"
+      - "/usr/bin/core_perl/gcc-ar-15"
+      - "/usr/lib/rustup/bin/gcc-ar-15"
+      - "/var/lib/snapd/snap/bin/gcc-ar-15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar-15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar-15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar-15"
+      - "/usr/bin/gcc-ar15"
+      - "/home/cpc/.local/bin/gcc-ar15"
+      - "/usr/local/bin/gcc-ar15"
+      - "/bin/gcc-ar15"
+      - "/usr/local/sbin/gcc-ar15"
+      - "/usr/lib/jvm/default/bin/gcc-ar15"
+      - "/usr/bin/site_perl/gcc-ar15"
+      - "/usr/bin/vendor_perl/gcc-ar15"
+      - "/usr/bin/core_perl/gcc-ar15"
+      - "/usr/lib/rustup/bin/gcc-ar15"
+      - "/var/lib/snapd/snap/bin/gcc-ar15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ar15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ar15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ar15"
+    found: "/usr/bin/gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ranlib-15.2"
+      - "gcc-ranlib-15"
+      - "gcc-ranlib15"
+      - "gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+    searched_directories:
+      - "/usr/bin/gcc-ranlib-15.2"
+      - "/home/cpc/.local/bin/gcc-ranlib-15.2"
+      - "/usr/local/bin/gcc-ranlib-15.2"
+      - "/bin/gcc-ranlib-15.2"
+      - "/usr/local/sbin/gcc-ranlib-15.2"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib-15.2"
+      - "/usr/bin/site_perl/gcc-ranlib-15.2"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15.2"
+      - "/usr/bin/core_perl/gcc-ranlib-15.2"
+      - "/usr/lib/rustup/bin/gcc-ranlib-15.2"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib-15.2"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib-15.2"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib-15.2"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib-15.2"
+      - "/usr/bin/gcc-ranlib-15"
+      - "/home/cpc/.local/bin/gcc-ranlib-15"
+      - "/usr/local/bin/gcc-ranlib-15"
+      - "/bin/gcc-ranlib-15"
+      - "/usr/local/sbin/gcc-ranlib-15"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib-15"
+      - "/usr/bin/site_perl/gcc-ranlib-15"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15"
+      - "/usr/bin/core_perl/gcc-ranlib-15"
+      - "/usr/lib/rustup/bin/gcc-ranlib-15"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib-15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib-15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib-15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib-15"
+      - "/usr/bin/gcc-ranlib15"
+      - "/home/cpc/.local/bin/gcc-ranlib15"
+      - "/usr/local/bin/gcc-ranlib15"
+      - "/bin/gcc-ranlib15"
+      - "/usr/local/sbin/gcc-ranlib15"
+      - "/usr/lib/jvm/default/bin/gcc-ranlib15"
+      - "/usr/bin/site_perl/gcc-ranlib15"
+      - "/usr/bin/vendor_perl/gcc-ranlib15"
+      - "/usr/bin/core_perl/gcc-ranlib15"
+      - "/usr/lib/rustup/bin/gcc-ranlib15"
+      - "/var/lib/snapd/snap/bin/gcc-ranlib15"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/gcc-ranlib15"
+      - "/home/cpc/gbtelera/tools/rgbds/gcc-ranlib15"
+      - "/home/cpc/gbtelera/tools/scripts/gcc-ranlib15"
+    found: "/usr/bin/gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2"
+      binary: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_cb5d9/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_cb5d9.dir/build.make CMakeFiles/cmTC_cb5d9.dir/build
+        make[1]: Entering directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2'
+        Building C object CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20250813 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_cb5d9.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccGYwEwz.s
+        GNU C23 (GCC) version 15.2.1 20250813 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20250813, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include
+         /usr/local/include
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed
+         /usr/include
+        End of search list.
+        Compiler executable checksum: 09af9d42b9185573b6c370dd7aa39e64
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/'
+         as -v --64 -o CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o /tmp/ccGYwEwz.s
+        GNU assembler version 2.45.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.0
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_cb5d9
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb5d9.dir/link.txt --verbose=1
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20250813 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb5d9' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cb5d9.'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc87SJzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_cb5d9 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        collect2 version 15.2.1 20250813
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc87SJzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_cb5d9 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        GNU ld (GNU Binutils) 2.45.0
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb5d9' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cb5d9.'
+        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -o cmTC_cb5d9
+        make[1]: Leaving directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+          add: [/usr/local/include]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_cb5d9/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_cb5d9.dir/build.make CMakeFiles/cmTC_cb5d9.dir/build]
+        ignore line: [make[1]: Entering directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-LHGch2']
+        ignore line: [Building C object CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20250813 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_cb5d9.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccGYwEwz.s]
+        ignore line: [GNU C23 (GCC) version 15.2.1 20250813 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 15.2.1 20250813  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 09af9d42b9185573b6c370dd7aa39e64]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o /tmp/ccGYwEwz.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.0]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_cb5d9]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb5d9.dir/link.txt --verbose=1]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20250813 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb5d9' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cb5d9.']
+        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc87SJzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_cb5d9 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc87SJzL.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_cb5d9] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        ignore line: [collect2 version 15.2.1 20250813]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc87SJzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_cb5d9 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_cb5d9.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        linker tool for 'C': /usr/bin/ld
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> [/usr/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o;/usr/lib/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1;/usr/lib;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.45.0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE"
+      binary: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3f4bd/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_3f4bd.dir/build.make CMakeFiles/cmTC_3f4bd.dir/build
+        make[1]: Entering directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE'
+        Building CXX object CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20250813 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3f4bd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cc5VctNA.s
+        GNU C++17 (GCC) version 15.2.1 20250813 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20250813, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include
+         /usr/local/include
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed
+         /usr/include
+        End of search list.
+        Compiler executable checksum: 452a313327dacf71986995db29f6855a
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/'
+         as -v --64 -o CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc5VctNA.s
+        GNU assembler version 2.45.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.0
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_3f4bd
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f4bd.dir/link.txt --verbose=1
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20250813 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3f4bd' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3f4bd.'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccu94ma7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_3f4bd /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        collect2 version 15.2.1 20250813
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccu94ma7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_3f4bd /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        GNU ld (GNU Binutils) 2.45.0
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3f4bd' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3f4bd.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_3f4bd
+        make[1]: Leaving directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+          add: [/usr/local/include]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1] ==> [/usr/include/c++/15.2.1]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu] ==> [/usr/include/c++/15.2.1/x86_64-pc-linux-gnu]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward] ==> [/usr/include/c++/15.2.1/backward]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/15.2.1;/usr/include/c++/15.2.1/x86_64-pc-linux-gnu;/usr/include/c++/15.2.1/backward;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3f4bd/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_3f4bd.dir/build.make CMakeFiles/cmTC_3f4bd.dir/build]
+        ignore line: [make[1]: Entering directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-s3qefE']
+        ignore line: [Building CXX object CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20250813 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3f4bd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cc5VctNA.s]
+        ignore line: [GNU C++17 (GCC) version 15.2.1 20250813 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 15.2.1 20250813  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 452a313327dacf71986995db29f6855a]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc5VctNA.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.0]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_3f4bd]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f4bd.dir/link.txt --verbose=1]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20250813 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3f4bd' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3f4bd.']
+        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccu94ma7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_3f4bd /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccu94ma7.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_3f4bd] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        ignore line: [collect2 version 15.2.1 20250813]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccu94ma7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_3f4bd /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3f4bd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> [/usr/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o;/usr/lib/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1;/usr/lib;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.45.0
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:178 (find_path)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "path"
+    variable: "SDL_INCLUDE_DIR"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDL.h"
+    candidate_directories:
+      - "/home/cpc/.local/bin/SDL/"
+      - "/home/cpc/.local/bin/SDL12/"
+      - "/home/cpc/.local/bin/SDL11/"
+      - "/home/cpc/.local/bin/include/SDL/"
+      - "/home/cpc/.local/bin/include/SDL12/"
+      - "/home/cpc/.local/bin/include/SDL11/"
+      - "/home/cpc/.local/bin/include/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/SDL/"
+      - "/usr/local/bin/SDL12/"
+      - "/usr/local/bin/SDL11/"
+      - "/usr/local/bin/include/SDL/"
+      - "/usr/local/bin/include/SDL12/"
+      - "/usr/local/bin/include/SDL11/"
+      - "/usr/local/bin/include/"
+      - "/usr/local/bin/"
+      - "/usr/bin/SDL/"
+      - "/usr/bin/SDL12/"
+      - "/usr/bin/SDL11/"
+      - "/usr/bin/include/SDL/"
+      - "/usr/bin/include/SDL12/"
+      - "/usr/bin/include/SDL11/"
+      - "/usr/bin/include/"
+      - "/usr/bin/"
+      - "/bin/SDL/"
+      - "/bin/SDL12/"
+      - "/bin/SDL11/"
+      - "/bin/include/SDL/"
+      - "/bin/include/SDL12/"
+      - "/bin/include/SDL11/"
+      - "/bin/include/"
+      - "/bin/"
+      - "/usr/local/sbin/SDL/"
+      - "/usr/local/sbin/SDL12/"
+      - "/usr/local/sbin/SDL11/"
+      - "/usr/local/sbin/include/SDL/"
+      - "/usr/local/sbin/include/SDL12/"
+      - "/usr/local/sbin/include/SDL11/"
+      - "/usr/local/sbin/include/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/SDL/"
+      - "/usr/lib/jvm/default/bin/SDL12/"
+      - "/usr/lib/jvm/default/bin/SDL11/"
+      - "/usr/lib/jvm/default/bin/include/SDL/"
+      - "/usr/lib/jvm/default/bin/include/SDL12/"
+      - "/usr/lib/jvm/default/bin/include/SDL11/"
+      - "/usr/lib/jvm/default/bin/include/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/SDL/"
+      - "/usr/bin/site_perl/SDL12/"
+      - "/usr/bin/site_perl/SDL11/"
+      - "/usr/bin/site_perl/include/SDL/"
+      - "/usr/bin/site_perl/include/SDL12/"
+      - "/usr/bin/site_perl/include/SDL11/"
+      - "/usr/bin/site_perl/include/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/SDL/"
+      - "/usr/bin/vendor_perl/SDL12/"
+      - "/usr/bin/vendor_perl/SDL11/"
+      - "/usr/bin/vendor_perl/include/SDL/"
+      - "/usr/bin/vendor_perl/include/SDL12/"
+      - "/usr/bin/vendor_perl/include/SDL11/"
+      - "/usr/bin/vendor_perl/include/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/SDL/"
+      - "/usr/bin/core_perl/SDL12/"
+      - "/usr/bin/core_perl/SDL11/"
+      - "/usr/bin/core_perl/include/SDL/"
+      - "/usr/bin/core_perl/include/SDL12/"
+      - "/usr/bin/core_perl/include/SDL11/"
+      - "/usr/bin/core_perl/include/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/SDL/"
+      - "/usr/lib/rustup/bin/SDL12/"
+      - "/usr/lib/rustup/bin/SDL11/"
+      - "/usr/lib/rustup/bin/include/SDL/"
+      - "/usr/lib/rustup/bin/include/SDL12/"
+      - "/usr/lib/rustup/bin/include/SDL11/"
+      - "/usr/lib/rustup/bin/include/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/SDL/"
+      - "/var/lib/snapd/snap/bin/SDL12/"
+      - "/var/lib/snapd/snap/bin/SDL11/"
+      - "/var/lib/snapd/snap/bin/include/SDL/"
+      - "/var/lib/snapd/snap/bin/include/SDL12/"
+      - "/var/lib/snapd/snap/bin/include/SDL11/"
+      - "/var/lib/snapd/snap/bin/include/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL12/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL11/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL12/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL11/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL12/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL11/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL12/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL11/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL12/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL11/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL12/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL11/"
+      - "/home/cpc/gbtelera/tools/scripts/include/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/include/SDL/"
+      - "/usr/local/include/SDL12/"
+      - "/usr/local/include/SDL11/"
+      - "/usr/local/include/include/SDL/"
+      - "/usr/local/include/include/SDL12/"
+      - "/usr/local/include/include/SDL11/"
+      - "/usr/local/include/include/"
+      - "/usr/local/include/"
+      - "/usr/local/SDL/"
+      - "/usr/local/SDL12/"
+      - "/usr/local/SDL11/"
+      - "/usr/local/include/SDL/"
+      - "/usr/local/include/SDL12/"
+      - "/usr/local/include/SDL11/"
+      - "/usr/local/include/"
+      - "/usr/local/"
+      - "/usr/include/SDL/"
+      - "/usr/include/SDL12/"
+      - "/usr/include/SDL11/"
+      - "/usr/include/include/SDL/"
+      - "/usr/include/include/SDL12/"
+      - "/usr/include/include/SDL11/"
+      - "/usr/include/include/"
+      - "/usr/include/"
+      - "/usr/SDL/"
+      - "/usr/SDL12/"
+      - "/usr/SDL11/"
+      - "/usr/include/SDL/"
+      - "/usr/include/SDL12/"
+      - "/usr/include/SDL11/"
+      - "/usr/include/"
+      - "/usr/"
+      - "/include/SDL/"
+      - "/include/SDL12/"
+      - "/include/SDL11/"
+      - "/include/include/SDL/"
+      - "/include/include/SDL12/"
+      - "/include/include/SDL11/"
+      - "/include/include/"
+      - "/include/"
+      - "/usr/X11R6/include/SDL/"
+      - "/usr/X11R6/include/SDL12/"
+      - "/usr/X11R6/include/SDL11/"
+      - "/usr/X11R6/include/include/SDL/"
+      - "/usr/X11R6/include/include/SDL12/"
+      - "/usr/X11R6/include/include/SDL11/"
+      - "/usr/X11R6/include/include/"
+      - "/usr/X11R6/include/"
+      - "/usr/X11R6/SDL/"
+      - "/usr/X11R6/SDL12/"
+      - "/usr/X11R6/SDL11/"
+      - "/usr/X11R6/include/SDL/"
+      - "/usr/X11R6/include/SDL12/"
+      - "/usr/X11R6/include/SDL11/"
+      - "/usr/X11R6/include/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/include/SDL/"
+      - "/usr/pkg/include/SDL12/"
+      - "/usr/pkg/include/SDL11/"
+      - "/usr/pkg/include/include/SDL/"
+      - "/usr/pkg/include/include/SDL12/"
+      - "/usr/pkg/include/include/SDL11/"
+      - "/usr/pkg/include/include/"
+      - "/usr/pkg/include/"
+      - "/usr/pkg/SDL/"
+      - "/usr/pkg/SDL12/"
+      - "/usr/pkg/SDL11/"
+      - "/usr/pkg/include/SDL/"
+      - "/usr/pkg/include/SDL12/"
+      - "/usr/pkg/include/SDL11/"
+      - "/usr/pkg/include/"
+      - "/usr/pkg/"
+      - "/opt/include/SDL/"
+      - "/opt/include/SDL12/"
+      - "/opt/include/SDL11/"
+      - "/opt/include/include/SDL/"
+      - "/opt/include/include/SDL12/"
+      - "/opt/include/include/SDL11/"
+      - "/opt/include/include/"
+      - "/opt/include/"
+      - "/opt/SDL/"
+      - "/opt/SDL12/"
+      - "/opt/SDL11/"
+      - "/opt/include/SDL/"
+      - "/opt/include/SDL12/"
+      - "/opt/include/SDL11/"
+      - "/opt/include/"
+      - "/opt/"
+      - "/usr/include/X11/SDL/"
+      - "/usr/include/X11/SDL12/"
+      - "/usr/include/X11/SDL11/"
+      - "/usr/include/X11/include/SDL/"
+      - "/usr/include/X11/include/SDL12/"
+      - "/usr/include/X11/include/SDL11/"
+      - "/usr/include/X11/include/"
+      - "/usr/include/X11/"
+    searched_directories:
+      - "/home/cpc/.local/bin/SDL/SDL.h"
+      - "/home/cpc/.local/bin/SDL12/SDL.h"
+      - "/home/cpc/.local/bin/SDL11/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL12/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL11/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL.h"
+      - "/home/cpc/.local/bin/SDL.h"
+      - "/usr/local/bin/SDL/SDL.h"
+      - "/usr/local/bin/SDL12/SDL.h"
+      - "/usr/local/bin/SDL11/SDL.h"
+      - "/usr/local/bin/include/SDL/SDL.h"
+      - "/usr/local/bin/include/SDL12/SDL.h"
+      - "/usr/local/bin/include/SDL11/SDL.h"
+      - "/usr/local/bin/include/SDL.h"
+      - "/usr/local/bin/SDL.h"
+      - "/usr/bin/SDL/SDL.h"
+      - "/usr/bin/SDL12/SDL.h"
+      - "/usr/bin/SDL11/SDL.h"
+      - "/usr/bin/include/SDL/SDL.h"
+      - "/usr/bin/include/SDL12/SDL.h"
+      - "/usr/bin/include/SDL11/SDL.h"
+      - "/usr/bin/include/SDL.h"
+      - "/usr/bin/SDL.h"
+      - "/bin/SDL/SDL.h"
+      - "/bin/SDL12/SDL.h"
+      - "/bin/SDL11/SDL.h"
+      - "/bin/include/SDL/SDL.h"
+      - "/bin/include/SDL12/SDL.h"
+      - "/bin/include/SDL11/SDL.h"
+      - "/bin/include/SDL.h"
+      - "/bin/SDL.h"
+      - "/usr/local/sbin/SDL/SDL.h"
+      - "/usr/local/sbin/SDL12/SDL.h"
+      - "/usr/local/sbin/SDL11/SDL.h"
+      - "/usr/local/sbin/include/SDL/SDL.h"
+      - "/usr/local/sbin/include/SDL12/SDL.h"
+      - "/usr/local/sbin/include/SDL11/SDL.h"
+      - "/usr/local/sbin/include/SDL.h"
+      - "/usr/local/sbin/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL12/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL11/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL12/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL11/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL.h"
+      - "/usr/bin/site_perl/SDL/SDL.h"
+      - "/usr/bin/site_perl/SDL12/SDL.h"
+      - "/usr/bin/site_perl/SDL11/SDL.h"
+      - "/usr/bin/site_perl/include/SDL/SDL.h"
+      - "/usr/bin/site_perl/include/SDL12/SDL.h"
+      - "/usr/bin/site_perl/include/SDL11/SDL.h"
+      - "/usr/bin/site_perl/include/SDL.h"
+      - "/usr/bin/site_perl/SDL.h"
+      - "/usr/bin/vendor_perl/SDL/SDL.h"
+      - "/usr/bin/vendor_perl/SDL12/SDL.h"
+      - "/usr/bin/vendor_perl/SDL11/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL12/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL11/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL.h"
+      - "/usr/bin/vendor_perl/SDL.h"
+      - "/usr/bin/core_perl/SDL/SDL.h"
+      - "/usr/bin/core_perl/SDL12/SDL.h"
+      - "/usr/bin/core_perl/SDL11/SDL.h"
+      - "/usr/bin/core_perl/include/SDL/SDL.h"
+      - "/usr/bin/core_perl/include/SDL12/SDL.h"
+      - "/usr/bin/core_perl/include/SDL11/SDL.h"
+      - "/usr/bin/core_perl/include/SDL.h"
+      - "/usr/bin/core_perl/SDL.h"
+      - "/usr/lib/rustup/bin/SDL/SDL.h"
+      - "/usr/lib/rustup/bin/SDL12/SDL.h"
+      - "/usr/lib/rustup/bin/SDL11/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL12/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL11/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL.h"
+      - "/usr/lib/rustup/bin/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL12/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL11/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL12/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL11/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL12/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL11/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL12/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL11/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL.h"
+      - "/usr/local/include/SDL/SDL.h"
+      - "/usr/local/include/SDL12/SDL.h"
+      - "/usr/local/include/SDL11/SDL.h"
+      - "/usr/local/include/include/SDL/SDL.h"
+      - "/usr/local/include/include/SDL12/SDL.h"
+      - "/usr/local/include/include/SDL11/SDL.h"
+      - "/usr/local/include/include/SDL.h"
+      - "/usr/local/include/SDL.h"
+      - "/usr/local/SDL/SDL.h"
+      - "/usr/local/SDL12/SDL.h"
+      - "/usr/local/SDL11/SDL.h"
+      - "/usr/local/include/SDL/SDL.h"
+      - "/usr/local/include/SDL12/SDL.h"
+      - "/usr/local/include/SDL11/SDL.h"
+      - "/usr/local/include/SDL.h"
+      - "/usr/local/SDL.h"
+      - "/usr/include/SDL/SDL.h"
+      - "/usr/include/SDL12/SDL.h"
+      - "/usr/include/SDL11/SDL.h"
+      - "/usr/include/include/SDL/SDL.h"
+      - "/usr/include/include/SDL12/SDL.h"
+      - "/usr/include/include/SDL11/SDL.h"
+      - "/usr/include/include/SDL.h"
+      - "/usr/include/SDL.h"
+      - "/usr/SDL/SDL.h"
+      - "/usr/SDL12/SDL.h"
+      - "/usr/SDL11/SDL.h"
+      - "/usr/include/SDL/SDL.h"
+      - "/usr/include/SDL12/SDL.h"
+      - "/usr/include/SDL11/SDL.h"
+      - "/usr/include/SDL.h"
+      - "/usr/SDL.h"
+      - "/include/SDL/SDL.h"
+      - "/include/SDL12/SDL.h"
+      - "/include/SDL11/SDL.h"
+      - "/include/include/SDL/SDL.h"
+      - "/include/include/SDL12/SDL.h"
+      - "/include/include/SDL11/SDL.h"
+      - "/include/include/SDL.h"
+      - "/include/SDL.h"
+      - "/usr/X11R6/include/SDL/SDL.h"
+      - "/usr/X11R6/include/SDL12/SDL.h"
+      - "/usr/X11R6/include/SDL11/SDL.h"
+      - "/usr/X11R6/include/include/SDL/SDL.h"
+      - "/usr/X11R6/include/include/SDL12/SDL.h"
+      - "/usr/X11R6/include/include/SDL11/SDL.h"
+      - "/usr/X11R6/include/include/SDL.h"
+      - "/usr/X11R6/include/SDL.h"
+      - "/usr/X11R6/SDL/SDL.h"
+      - "/usr/X11R6/SDL12/SDL.h"
+      - "/usr/X11R6/SDL11/SDL.h"
+      - "/usr/X11R6/include/SDL/SDL.h"
+      - "/usr/X11R6/include/SDL12/SDL.h"
+      - "/usr/X11R6/include/SDL11/SDL.h"
+      - "/usr/X11R6/include/SDL.h"
+      - "/usr/X11R6/SDL.h"
+      - "/usr/pkg/include/SDL/SDL.h"
+      - "/usr/pkg/include/SDL12/SDL.h"
+      - "/usr/pkg/include/SDL11/SDL.h"
+      - "/usr/pkg/include/include/SDL/SDL.h"
+      - "/usr/pkg/include/include/SDL12/SDL.h"
+      - "/usr/pkg/include/include/SDL11/SDL.h"
+      - "/usr/pkg/include/include/SDL.h"
+      - "/usr/pkg/include/SDL.h"
+      - "/usr/pkg/SDL/SDL.h"
+      - "/usr/pkg/SDL12/SDL.h"
+      - "/usr/pkg/SDL11/SDL.h"
+      - "/usr/pkg/include/SDL/SDL.h"
+      - "/usr/pkg/include/SDL12/SDL.h"
+      - "/usr/pkg/include/SDL11/SDL.h"
+      - "/usr/pkg/include/SDL.h"
+      - "/usr/pkg/SDL.h"
+      - "/opt/include/SDL/SDL.h"
+      - "/opt/include/SDL12/SDL.h"
+      - "/opt/include/SDL11/SDL.h"
+      - "/opt/include/include/SDL/SDL.h"
+      - "/opt/include/include/SDL12/SDL.h"
+      - "/opt/include/include/SDL11/SDL.h"
+      - "/opt/include/include/SDL.h"
+      - "/opt/include/SDL.h"
+      - "/opt/SDL/SDL.h"
+      - "/opt/SDL12/SDL.h"
+      - "/opt/SDL11/SDL.h"
+      - "/opt/include/SDL/SDL.h"
+      - "/opt/include/SDL12/SDL.h"
+      - "/opt/include/SDL11/SDL.h"
+      - "/opt/include/SDL.h"
+      - "/opt/SDL.h"
+      - "/usr/include/X11/SDL/SDL.h"
+      - "/usr/include/X11/SDL12/SDL.h"
+      - "/usr/include/X11/SDL11/SDL.h"
+      - "/usr/include/X11/include/SDL/SDL.h"
+      - "/usr/include/X11/include/SDL12/SDL.h"
+      - "/usr/include/X11/include/SDL11/SDL.h"
+      - "/usr/include/X11/include/SDL.h"
+      - "/usr/include/X11/SDL.h"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_INCLUDE_PATH:
+        - "/usr/include/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:194 (find_library)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "library"
+    variable: "SDL_LIBRARY_TEMP"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDL"
+      - "SDL-1.1"
+    candidate_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+    searched_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:212 (find_library)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "library"
+    variable: "SDLMAIN_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDLmain"
+      - "SDLmain-1.1"
+    candidate_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+    searched_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:97 (check_c_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/usr/share/cmake/Modules/FindSDL.cmake:228 (find_package)"
+      - "CMakeLists.txt:25 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo"
+      binary: "/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_aac0a/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_aac0a.dir/build.make CMakeFiles/cmTC_aac0a.dir/build
+        make[1]: Entering directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo'
+        Building C object CMakeFiles/cmTC_aac0a.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_aac0a.dir/src.c.o -c /home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo/src.c
+        Linking C executable cmTC_aac0a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aac0a.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_aac0a.dir/src.c.o -o cmTC_aac0a
+        make[1]: Leaving directory '/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/CMakeScratch/TryCompile-9fWjPo'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:178 (find_path)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "path"
+    variable: "SDL_INCLUDE_DIR"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDL.h"
+    candidate_directories:
+      - "/home/cpc/.local/bin/SDL/"
+      - "/home/cpc/.local/bin/SDL12/"
+      - "/home/cpc/.local/bin/SDL11/"
+      - "/home/cpc/.local/bin/include/SDL/"
+      - "/home/cpc/.local/bin/include/SDL12/"
+      - "/home/cpc/.local/bin/include/SDL11/"
+      - "/home/cpc/.local/bin/include/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/SDL/"
+      - "/usr/local/bin/SDL12/"
+      - "/usr/local/bin/SDL11/"
+      - "/usr/local/bin/include/SDL/"
+      - "/usr/local/bin/include/SDL12/"
+      - "/usr/local/bin/include/SDL11/"
+      - "/usr/local/bin/include/"
+      - "/usr/local/bin/"
+      - "/usr/bin/SDL/"
+      - "/usr/bin/SDL12/"
+      - "/usr/bin/SDL11/"
+      - "/usr/bin/include/SDL/"
+      - "/usr/bin/include/SDL12/"
+      - "/usr/bin/include/SDL11/"
+      - "/usr/bin/include/"
+      - "/usr/bin/"
+      - "/bin/SDL/"
+      - "/bin/SDL12/"
+      - "/bin/SDL11/"
+      - "/bin/include/SDL/"
+      - "/bin/include/SDL12/"
+      - "/bin/include/SDL11/"
+      - "/bin/include/"
+      - "/bin/"
+      - "/usr/local/sbin/SDL/"
+      - "/usr/local/sbin/SDL12/"
+      - "/usr/local/sbin/SDL11/"
+      - "/usr/local/sbin/include/SDL/"
+      - "/usr/local/sbin/include/SDL12/"
+      - "/usr/local/sbin/include/SDL11/"
+      - "/usr/local/sbin/include/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/SDL/"
+      - "/usr/lib/jvm/default/bin/SDL12/"
+      - "/usr/lib/jvm/default/bin/SDL11/"
+      - "/usr/lib/jvm/default/bin/include/SDL/"
+      - "/usr/lib/jvm/default/bin/include/SDL12/"
+      - "/usr/lib/jvm/default/bin/include/SDL11/"
+      - "/usr/lib/jvm/default/bin/include/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/SDL/"
+      - "/usr/bin/site_perl/SDL12/"
+      - "/usr/bin/site_perl/SDL11/"
+      - "/usr/bin/site_perl/include/SDL/"
+      - "/usr/bin/site_perl/include/SDL12/"
+      - "/usr/bin/site_perl/include/SDL11/"
+      - "/usr/bin/site_perl/include/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/SDL/"
+      - "/usr/bin/vendor_perl/SDL12/"
+      - "/usr/bin/vendor_perl/SDL11/"
+      - "/usr/bin/vendor_perl/include/SDL/"
+      - "/usr/bin/vendor_perl/include/SDL12/"
+      - "/usr/bin/vendor_perl/include/SDL11/"
+      - "/usr/bin/vendor_perl/include/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/SDL/"
+      - "/usr/bin/core_perl/SDL12/"
+      - "/usr/bin/core_perl/SDL11/"
+      - "/usr/bin/core_perl/include/SDL/"
+      - "/usr/bin/core_perl/include/SDL12/"
+      - "/usr/bin/core_perl/include/SDL11/"
+      - "/usr/bin/core_perl/include/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/SDL/"
+      - "/usr/lib/rustup/bin/SDL12/"
+      - "/usr/lib/rustup/bin/SDL11/"
+      - "/usr/lib/rustup/bin/include/SDL/"
+      - "/usr/lib/rustup/bin/include/SDL12/"
+      - "/usr/lib/rustup/bin/include/SDL11/"
+      - "/usr/lib/rustup/bin/include/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/SDL/"
+      - "/var/lib/snapd/snap/bin/SDL12/"
+      - "/var/lib/snapd/snap/bin/SDL11/"
+      - "/var/lib/snapd/snap/bin/include/SDL/"
+      - "/var/lib/snapd/snap/bin/include/SDL12/"
+      - "/var/lib/snapd/snap/bin/include/SDL11/"
+      - "/var/lib/snapd/snap/bin/include/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL12/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL11/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL12/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL11/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL12/"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL11/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL12/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL11/"
+      - "/home/cpc/gbtelera/tools/rgbds/include/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL12/"
+      - "/home/cpc/gbtelera/tools/scripts/SDL11/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL12/"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL11/"
+      - "/home/cpc/gbtelera/tools/scripts/include/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/include/SDL/"
+      - "/usr/local/include/SDL12/"
+      - "/usr/local/include/SDL11/"
+      - "/usr/local/include/include/SDL/"
+      - "/usr/local/include/include/SDL12/"
+      - "/usr/local/include/include/SDL11/"
+      - "/usr/local/include/include/"
+      - "/usr/local/include/"
+      - "/usr/local/SDL/"
+      - "/usr/local/SDL12/"
+      - "/usr/local/SDL11/"
+      - "/usr/local/include/SDL/"
+      - "/usr/local/include/SDL12/"
+      - "/usr/local/include/SDL11/"
+      - "/usr/local/include/"
+      - "/usr/local/"
+      - "/usr/include/SDL/"
+      - "/usr/include/SDL12/"
+      - "/usr/include/SDL11/"
+      - "/usr/include/include/SDL/"
+      - "/usr/include/include/SDL12/"
+      - "/usr/include/include/SDL11/"
+      - "/usr/include/include/"
+      - "/usr/include/"
+      - "/usr/SDL/"
+      - "/usr/SDL12/"
+      - "/usr/SDL11/"
+      - "/usr/include/SDL/"
+      - "/usr/include/SDL12/"
+      - "/usr/include/SDL11/"
+      - "/usr/include/"
+      - "/usr/"
+      - "/include/SDL/"
+      - "/include/SDL12/"
+      - "/include/SDL11/"
+      - "/include/include/SDL/"
+      - "/include/include/SDL12/"
+      - "/include/include/SDL11/"
+      - "/include/include/"
+      - "/include/"
+      - "/usr/X11R6/include/SDL/"
+      - "/usr/X11R6/include/SDL12/"
+      - "/usr/X11R6/include/SDL11/"
+      - "/usr/X11R6/include/include/SDL/"
+      - "/usr/X11R6/include/include/SDL12/"
+      - "/usr/X11R6/include/include/SDL11/"
+      - "/usr/X11R6/include/include/"
+      - "/usr/X11R6/include/"
+      - "/usr/X11R6/SDL/"
+      - "/usr/X11R6/SDL12/"
+      - "/usr/X11R6/SDL11/"
+      - "/usr/X11R6/include/SDL/"
+      - "/usr/X11R6/include/SDL12/"
+      - "/usr/X11R6/include/SDL11/"
+      - "/usr/X11R6/include/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/include/SDL/"
+      - "/usr/pkg/include/SDL12/"
+      - "/usr/pkg/include/SDL11/"
+      - "/usr/pkg/include/include/SDL/"
+      - "/usr/pkg/include/include/SDL12/"
+      - "/usr/pkg/include/include/SDL11/"
+      - "/usr/pkg/include/include/"
+      - "/usr/pkg/include/"
+      - "/usr/pkg/SDL/"
+      - "/usr/pkg/SDL12/"
+      - "/usr/pkg/SDL11/"
+      - "/usr/pkg/include/SDL/"
+      - "/usr/pkg/include/SDL12/"
+      - "/usr/pkg/include/SDL11/"
+      - "/usr/pkg/include/"
+      - "/usr/pkg/"
+      - "/opt/include/SDL/"
+      - "/opt/include/SDL12/"
+      - "/opt/include/SDL11/"
+      - "/opt/include/include/SDL/"
+      - "/opt/include/include/SDL12/"
+      - "/opt/include/include/SDL11/"
+      - "/opt/include/include/"
+      - "/opt/include/"
+      - "/opt/SDL/"
+      - "/opt/SDL12/"
+      - "/opt/SDL11/"
+      - "/opt/include/SDL/"
+      - "/opt/include/SDL12/"
+      - "/opt/include/SDL11/"
+      - "/opt/include/"
+      - "/opt/"
+      - "/usr/include/X11/SDL/"
+      - "/usr/include/X11/SDL12/"
+      - "/usr/include/X11/SDL11/"
+      - "/usr/include/X11/include/SDL/"
+      - "/usr/include/X11/include/SDL12/"
+      - "/usr/include/X11/include/SDL11/"
+      - "/usr/include/X11/include/"
+      - "/usr/include/X11/"
+    searched_directories:
+      - "/home/cpc/.local/bin/SDL/SDL.h"
+      - "/home/cpc/.local/bin/SDL12/SDL.h"
+      - "/home/cpc/.local/bin/SDL11/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL12/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL11/SDL.h"
+      - "/home/cpc/.local/bin/include/SDL.h"
+      - "/home/cpc/.local/bin/SDL.h"
+      - "/usr/local/bin/SDL/SDL.h"
+      - "/usr/local/bin/SDL12/SDL.h"
+      - "/usr/local/bin/SDL11/SDL.h"
+      - "/usr/local/bin/include/SDL/SDL.h"
+      - "/usr/local/bin/include/SDL12/SDL.h"
+      - "/usr/local/bin/include/SDL11/SDL.h"
+      - "/usr/local/bin/include/SDL.h"
+      - "/usr/local/bin/SDL.h"
+      - "/usr/bin/SDL/SDL.h"
+      - "/usr/bin/SDL12/SDL.h"
+      - "/usr/bin/SDL11/SDL.h"
+      - "/usr/bin/include/SDL/SDL.h"
+      - "/usr/bin/include/SDL12/SDL.h"
+      - "/usr/bin/include/SDL11/SDL.h"
+      - "/usr/bin/include/SDL.h"
+      - "/usr/bin/SDL.h"
+      - "/bin/SDL/SDL.h"
+      - "/bin/SDL12/SDL.h"
+      - "/bin/SDL11/SDL.h"
+      - "/bin/include/SDL/SDL.h"
+      - "/bin/include/SDL12/SDL.h"
+      - "/bin/include/SDL11/SDL.h"
+      - "/bin/include/SDL.h"
+      - "/bin/SDL.h"
+      - "/usr/local/sbin/SDL/SDL.h"
+      - "/usr/local/sbin/SDL12/SDL.h"
+      - "/usr/local/sbin/SDL11/SDL.h"
+      - "/usr/local/sbin/include/SDL/SDL.h"
+      - "/usr/local/sbin/include/SDL12/SDL.h"
+      - "/usr/local/sbin/include/SDL11/SDL.h"
+      - "/usr/local/sbin/include/SDL.h"
+      - "/usr/local/sbin/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL12/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL11/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL12/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL11/SDL.h"
+      - "/usr/lib/jvm/default/bin/include/SDL.h"
+      - "/usr/lib/jvm/default/bin/SDL.h"
+      - "/usr/bin/site_perl/SDL/SDL.h"
+      - "/usr/bin/site_perl/SDL12/SDL.h"
+      - "/usr/bin/site_perl/SDL11/SDL.h"
+      - "/usr/bin/site_perl/include/SDL/SDL.h"
+      - "/usr/bin/site_perl/include/SDL12/SDL.h"
+      - "/usr/bin/site_perl/include/SDL11/SDL.h"
+      - "/usr/bin/site_perl/include/SDL.h"
+      - "/usr/bin/site_perl/SDL.h"
+      - "/usr/bin/vendor_perl/SDL/SDL.h"
+      - "/usr/bin/vendor_perl/SDL12/SDL.h"
+      - "/usr/bin/vendor_perl/SDL11/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL12/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL11/SDL.h"
+      - "/usr/bin/vendor_perl/include/SDL.h"
+      - "/usr/bin/vendor_perl/SDL.h"
+      - "/usr/bin/core_perl/SDL/SDL.h"
+      - "/usr/bin/core_perl/SDL12/SDL.h"
+      - "/usr/bin/core_perl/SDL11/SDL.h"
+      - "/usr/bin/core_perl/include/SDL/SDL.h"
+      - "/usr/bin/core_perl/include/SDL12/SDL.h"
+      - "/usr/bin/core_perl/include/SDL11/SDL.h"
+      - "/usr/bin/core_perl/include/SDL.h"
+      - "/usr/bin/core_perl/SDL.h"
+      - "/usr/lib/rustup/bin/SDL/SDL.h"
+      - "/usr/lib/rustup/bin/SDL12/SDL.h"
+      - "/usr/lib/rustup/bin/SDL11/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL12/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL11/SDL.h"
+      - "/usr/lib/rustup/bin/include/SDL.h"
+      - "/usr/lib/rustup/bin/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL12/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL11/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL12/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL11/SDL.h"
+      - "/var/lib/snapd/snap/bin/include/SDL.h"
+      - "/var/lib/snapd/snap/bin/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL12/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL11/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL12/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL11/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/include/SDL.h"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/include/SDL.h"
+      - "/home/cpc/gbtelera/tools/rgbds/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL12/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL11/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/include/SDL.h"
+      - "/home/cpc/gbtelera/tools/scripts/SDL.h"
+      - "/usr/local/include/SDL/SDL.h"
+      - "/usr/local/include/SDL12/SDL.h"
+      - "/usr/local/include/SDL11/SDL.h"
+      - "/usr/local/include/include/SDL/SDL.h"
+      - "/usr/local/include/include/SDL12/SDL.h"
+      - "/usr/local/include/include/SDL11/SDL.h"
+      - "/usr/local/include/include/SDL.h"
+      - "/usr/local/include/SDL.h"
+      - "/usr/local/SDL/SDL.h"
+      - "/usr/local/SDL12/SDL.h"
+      - "/usr/local/SDL11/SDL.h"
+      - "/usr/local/include/SDL/SDL.h"
+      - "/usr/local/include/SDL12/SDL.h"
+      - "/usr/local/include/SDL11/SDL.h"
+      - "/usr/local/include/SDL.h"
+      - "/usr/local/SDL.h"
+    found: "/usr/include/SDL/"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_INCLUDE_PATH:
+        - "/usr/include/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:194 (find_library)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "library"
+    variable: "SDL_LIBRARY_TEMP"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDL"
+      - "SDL-1.1"
+    candidate_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+    searched_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+    found: "/usr/lib/libSDL.so"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindSDL.cmake:212 (find_library)"
+      - "CMakeLists.txt:25 (find_package)"
+    mode: "library"
+    variable: "SDLMAIN_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SDLmain"
+      - "SDLmain-1.1"
+    candidate_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+      - "/usr/lib/"
+      - "/usr/lib/"
+      - "/usr/lib/x64/"
+      - "/usr/"
+      - "/lib/lib/"
+      - "/lib/lib/x64/"
+      - "/lib/"
+      - "/usr/X11R6/lib/lib/"
+      - "/usr/X11R6/lib/lib/x64/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/lib/x64/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/lib/"
+      - "/usr/pkg/lib/lib/x64/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/lib/x64/"
+      - "/usr/pkg/"
+      - "/opt/lib/lib/"
+      - "/opt/lib/lib/x64/"
+      - "/opt/lib/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+      - "/usr/lib/X11/lib/"
+      - "/usr/lib/X11/lib/x64/"
+      - "/usr/lib/X11/"
+      - "/opt/lib/"
+      - "/opt/lib/x64/"
+      - "/opt/"
+    searched_directories:
+      - "/home/cpc/.local/bin/lib/"
+      - "/home/cpc/.local/bin/lib/x64/"
+      - "/home/cpc/.local/bin/"
+      - "/usr/local/bin/lib/"
+      - "/usr/local/bin/lib/x64/"
+      - "/usr/local/bin/"
+      - "/usr/bin/lib/"
+      - "/usr/bin/lib/x64/"
+      - "/usr/bin/"
+      - "/bin/lib/"
+      - "/bin/lib/x64/"
+      - "/bin/"
+      - "/usr/local/sbin/lib/"
+      - "/usr/local/sbin/lib/x64/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/lib/"
+      - "/usr/lib/jvm/default/bin/lib/x64/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/lib/"
+      - "/usr/bin/site_perl/lib/x64/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/lib/"
+      - "/usr/bin/vendor_perl/lib/x64/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/lib/"
+      - "/usr/bin/core_perl/lib/x64/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/lib/"
+      - "/usr/lib/rustup/bin/lib/x64/"
+      - "/usr/lib/rustup/bin/"
+      - "/var/lib/snapd/snap/bin/lib/"
+      - "/var/lib/snapd/snap/bin/lib/x64/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/lib/x64/"
+      - "/home/cpc/cpctelera/cpctelera/tools/scripts/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/"
+      - "/home/cpc/gbtelera/tools/rgbds/lib/x64/"
+      - "/home/cpc/gbtelera/tools/rgbds/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/"
+      - "/home/cpc/gbtelera/tools/scripts/lib/x64/"
+      - "/home/cpc/gbtelera/tools/scripts/"
+      - "/usr/local/lib/lib/"
+      - "/usr/local/lib/lib/x64/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/"
+      - "/usr/local/lib/x64/"
+      - "/usr/local/"
+      - "/usr/lib/lib/"
+      - "/usr/lib/lib/x64/"
+    found: "/usr/lib/libSDLmain.a"
+    search_context:
+      ENV{PATH}:
+        - "/home/cpc/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+        - "/var/lib/snapd/snap/bin"
+        - "/home/cpc/cpctelera/cpctelera/tools/scripts"
+        - "/home/cpc/gbtelera/tools/rgbds"
+        - "/home/cpc/gbtelera/tools/scripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+...

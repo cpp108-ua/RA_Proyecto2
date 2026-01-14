@@ -1,0 +1,10 @@
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/ale-lib.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/ale-bin.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/ale-c-lib.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/uninstall.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/edit_cache.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/rebuild_cache.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/list_install_components.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/install.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/install/local.dir
+/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/CMakeFiles/install/strip.dir

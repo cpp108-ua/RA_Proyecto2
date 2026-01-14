@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/cpc/Desktop/Arcade-Learning-Environment-0.6.1/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
