@@ -106,12 +106,10 @@ public:
             hiddenGradients[h] = error * reluDerivative(hiddenLayer[h]); 
         }
 
-        double lambda = WEIGHT_DECAY;
-
         // Update Weights (Hidden -> Output)
         for(int h=0; h<hiddenNodes; h++) {
             for(int o=0; o<outputNodes; o++) {
-                double decay = lambda * wHiddenOutput[h][o];
+                double decay = WEIGHT_DECAY * wHiddenOutput[h][o];
                 wHiddenOutput[h][o] += LEARNING_RATE * outputGradients[o] * hiddenLayer[h] - decay;
             }
         }
@@ -121,7 +119,7 @@ public:
         // Update Weights (Input -> Hidden)
         for(int i=0; i<inputNodes; i++) {
             for(int h=0; h<hiddenNodes; h++) {
-                double decay = lambda * wInputHidden[i][h];
+                double decay = WEIGHT_DECAY * wInputHidden[i][h];
                 wInputHidden[i][h] += LEARNING_RATE * hiddenGradients[h] * inputs[i] - decay;
             }
         }
