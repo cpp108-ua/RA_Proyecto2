@@ -120,6 +120,7 @@ public:
         for (int i = 0; i < numModels; i++) {
             models.emplace_back(activeBytes);
             weights.push_back(1.0 / numModels); // Pesos iniciales uniformes
+            actionSpace.push_back(0);
         }
     }
 
