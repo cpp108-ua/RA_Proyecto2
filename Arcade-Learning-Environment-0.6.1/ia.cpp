@@ -111,6 +111,7 @@ public:
 class DecisionSystem {
 private:
     std::vector<NeuralNetwork> models; // Conjunto de modelos
+    std::vector<int> actionSpace;    // Espacio de acciones
     std::vector<double> weights;       // Pesos asociados a cada modelo
 
 public:
@@ -129,6 +130,7 @@ public:
         // Acumulación de predicciones ponderadas
         for (size_t i = 0; i < models.size(); i++) {
             int action = models[i].predict(inputs);
+            actionSpace[i] = action;
             actionScores[action] += weights[i];
         }
 
@@ -138,9 +140,13 @@ public:
     }
 
     // Actualización de pesos (boosting)
-    void updateWeights(const std::vector<double>& errors) {
+    void updateWeightsBoosting(const std::vector<double>& errors, const std::vector<int>& gains) {
         for (size_t i = 0; i < weights.size(); i++) {
             weights[i] *= exp(-errors[i]); // Penalización basada en error
+        }
+
+        for (size_t i = 0; i < weights.size(); i++) {
+            weights[i] *= (1.0 + gains[i] * 0.1); // Recompensa por ganancia
         }
 
         // Normalización de pesos
@@ -149,9 +155,14 @@ public:
             weight /= sumWeights;
         }
     }
+
+    void updateWeightsUniform() {
+        double uniformWeight = 1.0 / weights.size();
+        for (double& weight : weights) {
+            weight = uniformWeight;
+        }
+    }
 };
-
-
 
 void runInference(const std::string& romFile) {
     // Inicialización SDL/ALE
