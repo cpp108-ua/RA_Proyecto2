@@ -29,6 +29,29 @@ double sigmoidDerivative(double x) { return x * (1.0 - x); }
 double relu(double x) { return (x > 0) ? x : 0; }
 double reluDerivative(double x) { return (x > 0) ? 1.0 : 0.0; }
 
+// Leaky ReLU 
+double leakyRelu(double x) { return (x > 0) ? x : 0.01 * x; }
+double leakyReluDerivative(double x) { return (x > 0) ? 1.0 : 0.01; }
+
+// GELU
+double gelu(double x) { return 0.5 * x * (1.0 + tanh(sqrt(2.0 / M_PI) * (x + 0.044715 * pow(x, 3)))); }
+double geluDerivative(double x) { 
+    double tanhPart = tanh(sqrt(2.0 / M_PI) * (x + 0.044715 * pow(x, 3)));
+    double sech2 = 1.0 - tanhPart * tanhPart;
+    return 0.5 * (1.0 + tanhPart) + (0.5 * x * sech2 * sqrt(2.0 / M_PI) * (1.0 + 3.0 * 0.044715 * x * x));
+}
+
+// Swish
+double swish(double x) { return x * sigmoid(x); }
+double swishDerivative(double x) { 
+    double sig = sigmoid(x);
+    return sig + x * sig * (1.0 - sig);
+}
+
+// ELU
+double elu(double x) { return (x >= 0) ? x : (exp(x) - 1); }
+double eluDerivative(double x) { return (x >= 0) ? 1.0 : exp(x); }
+
 struct TrainingData {
     vector<double> inputs;
     vector<double> targets;
@@ -45,9 +68,11 @@ private:
     vector<double> bOutput;
     vector<double> hiddenLayer;
     vector<double> outputLayer;
+    string hiddenActivationFunc;
+    string outputActivationFunc;
 
 public:
-    NeuralNetwork(int inputs, int hidden, int outputs) 
+    NeuralNetwork(int inputs, int hidden, int outputs, string hiddenActivation="relu", string outputActivation="sigmoid") 
         : inputNodes(inputs), hiddenNodes(hidden), outputNodes(outputs) {
         hiddenLayer.resize(hiddenNodes);
         outputLayer.resize(outputNodes);
@@ -55,6 +80,8 @@ public:
         bOutput.resize(outputNodes);
         wInputHidden.resize(inputs, vector<double>(hiddenNodes));
         wHiddenOutput.resize(hiddenNodes, vector<double>(outputNodes));
+        hiddenActivationFunc = hiddenActivation;
+        outputActivationFunc = outputActivation;
         initializeWeights();
     }
 
@@ -74,16 +101,52 @@ public:
         for(int h=0; h<hiddenNodes; h++) {
             double sum = bHidden[h];
             for(int i=0; i<inputNodes; i++) sum += inputs[i] * wInputHidden[i][h];
-            hiddenLayer[h] = relu(sum); 
+            hiddenLayer[h] = getActivationFunction(hiddenActivationFunc)(sum);
         }
         
         // Hidden -> Output (Sigmoid)
         for(int o=0; o<outputNodes; o++) {
             double sum = bOutput[o];
             for(int h=0; h<hiddenNodes; h++) sum += hiddenLayer[h] * wHiddenOutput[h][o];
-            outputLayer[o] = sigmoid(sum);
+            outputLayer[o] = getActivationFunction(outputActivationFunc)(sum);
         }
         return outputLayer;
+    }
+
+    double (*getActivationFunction(const string& activationType))(double) {
+        if (activationType == "relu") {
+            return relu;
+        } else if (activationType == "sigmoid") {
+            return sigmoid;
+        } else if (activationType == "leaky_relu") {
+            return leakyRelu;
+        } else if (activationType == "gelu") {
+            return gelu;
+        } else if (activationType == "swish") {
+            return swish;
+        } else if (activationType == "elu") {
+            return elu;
+        } else {
+            throw invalid_argument("Unsupported activation function: " + activationType);
+        }
+    }
+
+    double (*getActivationDerivative(const string& activationType))(double) {
+        if (activationType == "relu") {
+            return reluDerivative;
+        } else if (activationType == "sigmoid") {
+            return sigmoidDerivative;
+        } else if (activationType == "leaky_relu") {
+            return leakyReluDerivative;
+        } else if (activationType == "gelu") {
+            return geluDerivative;
+        } else if (activationType == "swish") {
+            return swishDerivative;
+        } else if (activationType == "elu") {
+            return eluDerivative;
+        } else {
+            throw invalid_argument("Unsupported activation function derivative: " + activationType);
+        }
     }
 
     void train(const vector<double>& inputs, const vector<double>& targets) {
@@ -94,7 +157,7 @@ public:
         for(int o=0; o<outputNodes; o++) {
             double error = targets[o] - outputLayer[o];
             outputErrors[o] = error;
-            outputGradients[o] = error * sigmoidDerivative(outputLayer[o]);
+            outputGradients[o] = error * getActivationDerivative(outputActivationFunc)(outputLayer[o]);
         }
 
         // Error Hidden
@@ -103,7 +166,7 @@ public:
             double error = 0.0;
             for(int o=0; o<outputNodes; o++) error += outputErrors[o] * wHiddenOutput[h][o];
             hiddenErrors[h] = error;
-            hiddenGradients[h] = error * reluDerivative(hiddenLayer[h]); 
+            hiddenGradients[h] = error * getActivationDerivative(hiddenActivationFunc)(hiddenLayer[h]);
         }
 
         // Update Weights (Hidden -> Output)
