@@ -2,15 +2,17 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
+#include <string>
 #include <algorithm>
 #include <numeric>
 #include "src/ale_interface.hpp"
 #include <SDL/SDL.h> 
+#include "NeuralNetwork.hpp"
 
 // --- FUNCIONES DE ACTIVACIÓN ---
 double sigmoid(double x) { return 1.0 / (1.0 + exp(-x)); }
 double relu(double x) { return (x > 0) ? x : 0; }
-
+/*
 // --- MOTOR DE INFERENCIA ---
 class NeuralNetwork {
 private:
@@ -106,7 +108,7 @@ public:
     
     int getInputSize() const { return inputNodes; }
 };
-
+*/
 // --- SISTEMA DECISIONAL ---
 class DecisionSystem {
 private:
@@ -115,11 +117,21 @@ private:
     std::vector<double> weights;       // Pesos asociados a cada modelo
 
 public:
+    
     DecisionSystem(const std::vector<int>& activeBytes, int numModels) {
         // Inicialización de múltiples modelos
         for (int i = 0; i < numModels; i++) {
             models.emplace_back(activeBytes);
             weights.push_back(1.0 / numModels); // Pesos iniciales uniformes
+            actionSpace.push_back(0);
+        }
+    }
+    
+    DecisionSystem(const std::vector<std::string>& modelFiles) {
+        // Inicialización desde archivos específicos
+        for (const auto& file : modelFiles) {
+            models.emplace_back(file);
+            weights.push_back(1.0 / modelFiles.size());
             actionSpace.push_back(0);
         }
     }
@@ -191,8 +203,8 @@ void runInference(const std::string& romFile) {
     }
 
     // Inicialización del Modelo
-    DecisionSystem brain(activeBytes, 1); 
-
+    //DecisionSystem brain(activeBytes, 1); // Usando un solo modelo por simplicidad
+    DecisionSystem brain(vector<string>({"brain.txt"}));
     std::cout << "--- INFERENCIA INICIADA (ReLU/Sigmoid) ---" << std::endl;
 
     // Game Loop
