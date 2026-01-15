@@ -19,7 +19,7 @@ bp: bp.cpp
 	$(CXX) bp.cpp -o bp $(OPT_FLAGS)
 
 ga: ga.cpp
-	$(CXX) ga.cpp -o ga $(OPT_FLAGS)
+	$(CXX) ga.cpp -o ga $(OPT_FLAGS) $(ALE_FLAGS)
 
 ia: ia.cpp
 	$(CXX) ia.cpp -o ia $(ALE_FLAGS)

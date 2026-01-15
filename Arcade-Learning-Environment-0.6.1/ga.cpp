@@ -7,22 +7,26 @@
 #include <random>
 #include <iomanip>
 #include <string> // Aseguramos que string esté incluido
+#include "src/ale_interface.hpp"
+#include "NeuralNetwork.hpp"
 
 using namespace std;
+
+const bool REAL_FITNESS = true;
+const bool WARM_START = true;
 
 const bool TIMESTAMPED_MODELS = true;
 const string MODEL_PREFIX = "GA_";
 
 // Parámetros del Algoritmo Genético
-const int POPULATION_SIZE = 400;
+const int POPULATION_SIZE = 200;
 const double MUTATION_RATE = 0.20; 
 const double MUTATION_STRENGTH = 2.0; 
 const int ELITISM_COUNT = 5;
 const int GENERATIONS = 500;
 
 // Arquitectura de la Red
-const int HIDDEN_NEURONS = 64;
-const int OUTPUT_NEURONS = 18;
+const vector<int> TOPOLOGY = {64, 32, 18};
 
 // Estructura para contener pares input/target del dataset
 struct TrainingData {
@@ -30,15 +34,25 @@ struct TrainingData {
     vector<double> targets; 
 };
 
+/*
 class NeuralNetwork {
 private:
-    int inputNodes, hiddenNodes, outputNodes;
+    // Ex. {128, 64, 32, 18} -> 128 Input, 64 Hidden, 32 Hidden, 18 Output
+    vector<int> topology;
     vector<double> weights; 
 
 public:
-    NeuralNetwork(int inputs, int hidden, int outputs) : inputNodes(inputs), hiddenNodes(hidden), outputNodes(outputs) {
-        // Reserva memoria lineal para todos los pesos y bias de la red
-        int totalWeights = (inputs * hidden) + hidden + (hidden * outputs) + outputs;
+    NeuralNetwork(const vector<int>& topologyStructure) : topology(topologyStructure) {
+        int totalWeights = 0;
+        
+        // Calculate total weights needed for the DNA
+        // For every layer i and i+1: Weights = (Node_i * Node_i+1) + Bias_i+1
+        for (size_t i = 0; i < topology.size() - 1; ++i) {
+            int inputSize = topology[i];
+            int outputSize = topology[i + 1];
+            totalWeights += (inputSize * outputSize) + outputSize;
+        }
+
         weights.resize(totalWeights);
     }
 
@@ -48,9 +62,7 @@ public:
         mt19937 gen(rd());
         uniform_real_distribution<> dis(-0.2, 0.2); 
         
-        for(double &w : weights){
-            w = dis(gen);
-        } 
+        for(double &w : weights) w = dis(gen); 
     }
 
     void setWeights(const vector<double>& newWeights) {
@@ -65,27 +77,44 @@ public:
     double relu(double x) { return (x > 0) ? x : 0; }
 
     // Forward Propagation
-    vector<double> feedForward(const vector<double>& inputs) {
+    vector<double> feedForward(vector<double> currentValues) {
         int wIdx = 0;
-        vector<double> hidden(hiddenNodes);
-        
-        // Capa Oculta (Activación ReLU)
-        for(int h=0; h<hiddenNodes; h++) {
-            double sum = 0;
-            for(int i=0; i<inputNodes; i++) sum += inputs[i] * weights[wIdx++];
-            sum += weights[wIdx++]; // Bias
-            hidden[h] = relu(sum); 
-        }
 
-        // Capa de Salida (Activación Sigmoide para probabilidad)
-        vector<double> outputs(outputNodes);
-        for(int o=0; o<outputNodes; o++) {
-            double sum = 0;
-            for(int h=0; h<hiddenNodes; h++) sum += hidden[h] * weights[wIdx++];
-            sum += weights[wIdx++]; // Bias
-            outputs[o] = sigmoid(sum);
+        // Loop through each connection between layers
+        for (size_t i = 0; i < topology.size() - 1; ++i) {
+            
+            vector<double> nextValues; // The values for the next layer
+            int currentSize = topology[i];
+            int nextSize = topology[i + 1];
+            
+            // Check if this is the very last layer (to use Sigmoid)
+            bool isOutputLayer = (i == topology.size() - 2);
+
+            // Process every neuron in the NEXT layer
+            for (int n = 0; n < nextSize; ++n) {
+                double sum = 0.0;
+                
+                // Dot Product: Previous Layer Inputs * Weights
+                for (int c = 0; c < currentSize; ++c) {
+                    sum += currentValues[c] * weights[wIdx++];
+                }
+                
+                // Add Bias
+                sum += weights[wIdx++];
+
+                // Apply Activation
+                if (isOutputLayer) {
+                    nextValues.push_back(sigmoid(sum));
+                } else {
+                    nextValues.push_back(relu(sum));
+                }
+            }
+            
+            // Move forward: Next layer becomes current layer for next iteration
+            currentValues = nextValues;
         }
-        return outputs;
+        
+        return currentValues; // Final Output
     }
 
     // Serialización de pesos a formato matricial para importación en motor de juego
@@ -93,35 +122,37 @@ public:
         ofstream file(filename);
         if(!file.is_open()) return;
         
-        // Cabecera: Topología de la red
-        file << inputNodes << " " << hiddenNodes << " " << outputNodes << "\n";
+        // 1. Header: Number of Layers
+        file << topology.size() << "\n";
         
+        // 2. Header: Size of each layer
+        for(int size : topology) file << size << " ";
+        file << "\n";
+        
+        // 3. Dump Weights (Formatted for readability, though flat would work too)
         int wIdx = 0;
-        
-        // Reconstrucción de matrices
-        vector<vector<double>> wIH(inputNodes, vector<double>(hiddenNodes));
-        vector<double> bH(hiddenNodes);
-        for(int h=0; h<hiddenNodes; h++) {
-            for(int i=0; i<inputNodes; i++) wIH[i][h] = weights[wIdx++];
-            bH[h] = weights[wIdx++];
-        }
+        for (size_t i = 0; i < topology.size() - 1; ++i) {
+            int rows = topology[i];
+            int cols = topology[i+1];
 
-        // Reconstrucción de matrices Hidden->Output
-        vector<vector<double>> wHO(hiddenNodes, vector<double>(outputNodes));
-        vector<double> bO(outputNodes);
-        for(int o=0; o<outputNodes; o++) {
-            for(int h=0; h<hiddenNodes; h++) wHO[h][o] = weights[wIdx++];
-            bO[o] = weights[wIdx++];
+            // Save Matrix for this layer transition
+            for(int c=0; c<cols; c++) { // For each neuron in next layer
+                // Weights
+                for(int r=0; r<rows; r++) file << weights[wIdx++] << " ";
+                // Bias
+                file << weights[wIdx++] << " "; 
+                file << "\n";
+            }
+            file << "\n";
         }
-
-        // Escritura en texto plano
-        for(int i=0; i<inputNodes; i++) { for(int h=0; h<hiddenNodes; h++) file << wIH[i][h] << " "; file << "\n"; }
-        for(double b : bH) file << b << " "; file << "\n";
-        for(int h=0; h<hiddenNodes; h++) { for(int o=0; o<outputNodes; o++) file << wHO[h][o] << " "; file << "\n"; }
-        for(double b : bO) file << b << " "; file << "\n";
         file.close();
     }
+
+    int getOutputSize() const {
+        return topology.back();
+    }
 };
+*/
 
 struct Genome {
     vector<double> genes;
@@ -160,12 +191,82 @@ vector<TrainingData> loadData(const string& filename, int& inputSizeRef) {
         
         getline(ss, token, ',');
         int action = stoi(token);
-        sample.targets.resize(OUTPUT_NEURONS, 0.0);
-        if(action >= 0 && action < OUTPUT_NEURONS) sample.targets[action] = 1.0;
+        sample.targets.resize(TOPOLOGY.back(), 0.0);
+        if(action >= 0 && action < TOPOLOGY.back()) sample.targets[action] = 1.0;
         
         dataset.push_back(sample);
     }
     return dataset;
+}
+
+double calculateRealFitness(NeuralNetwork& net, const vector<double>& genes, vector<int>& activeBytes) {
+    net.setWeights(genes);
+
+    // --- SILENCE START ---
+    // Save the original buffers of cout and cerr
+    std::streambuf* originalCout = std::cout.rdbuf();
+    std::streambuf* originalCerr = std::cerr.rdbuf();
+
+    // Redirect them to a "black hole" (stringstream)
+    std::stringstream nullStream;
+    std::cout.rdbuf(nullStream.rdbuf());
+    std::cerr.rdbuf(nullStream.rdbuf());
+
+    // 2. Setup ALE (Must be local variable for OpenMP thread safety)
+    ALEInterface ale;
+    ale.setBool("display_screen", false); 
+    ale.setBool("sound", false);
+
+    ale.setInt("random_seed", 123); 
+    ale.setFloat("repeat_action_probability", 0.0); 
+    ale.setInt("frame_skip", 4);
+    ale.setInt("max_num_frames_per_episode", 7200);
+
+    ale.loadROM("supported/assault.bin");
+
+    // --- SILENCE END ---
+    // Restore the original output so you can see your own logs (Gen 1, Best Fitness, etc.)
+    std::cout.rdbuf(originalCout);
+    std::cerr.rdbuf(originalCerr);
+
+    double totalScore = 0.0;
+    int framesWithoutPoints = 0;
+    double previousScore = 0;
+
+    // 3. Game Loop
+    while (!ale.game_over()) {
+        const ALERAM& ram = ale.getRAM();
+        vector<double> inputs;
+        inputs.reserve(activeBytes.size());
+
+        // FIXED: Use index access and NORMALIZE values
+        for (int idx : activeBytes) {
+            inputs.push_back(ram.get(idx) / 255.0);
+        }
+
+        vector<double> output = net.feedForward(inputs);
+
+        // Select action with highest probability
+        auto maxIt = max_element(output.begin(), output.end());
+        int actionIndex = distance(output.begin(), maxIt);
+        
+        // Cast to Action enum
+        double reward = ale.act(static_cast<Action>(actionIndex));
+        
+        totalScore += reward;
+
+        // OPTIMIZACIÓN: Kill Switch (Si no gana puntos en mucho tiempo)
+        if (reward > 0) {
+            framesWithoutPoints = 0; // ¡Ganó puntos! Reiniciamos contador
+        } else {
+            framesWithoutPoints++;
+        }
+        
+        // Si pasan 400 'actuaciones' (aprox 25-30 segs de juego real) sin puntos, fuera.
+        if (framesWithoutPoints > 400) break;
+    }
+
+    return totalScore;
 }
 
 // Evaluación del desempeño de la red
@@ -221,51 +322,108 @@ stringstream getTimeStmp() {
     return timestamp;
 }
 
+vector<int> getActiveBytes() {
+    // Carga de Máscara (Feature Selection)
+    std::vector<int> activeBytes;
+    std::ifstream maskFile("mask.txt");
+    if (maskFile.is_open()) {
+        int idx;
+        while (maskFile >> idx) activeBytes.push_back(idx);
+        maskFile.close();
+    } else {
+        for (int i = 0; i < 128; i++) activeBytes.push_back(i);
+        std::cout << "[WARN] Usando máscara default (128 bytes)." << std::endl;
+    }
+    return activeBytes;
+}
+
 int main(int argc, char** argv) {
     // --- NUEVA LÓGICA DE INTERACCIÓN CON EL USUARIO ---
     string filename;
+    vector<TrainingData> data;
     
     cout << "========================================" << endl;
     cout << "      ENTRENAMIENTO GENETICO (GA)       " << endl;
     cout << "========================================" << endl;
-    cout << "Introduce el nombre del dataset a utilizar:" << endl;
-    cout << "(Deja vacio y pulsa ENTER para usar 'dataset_optimized.csv'): ";
+    if(!REAL_FITNESS) {
+        cout << "Introduce el nombre del dataset a utilizar:" << endl;
+        cout << "(Deja vacio y pulsa ENTER para usar 'dataset_optimized.csv'): ";
+        // Capturar entrada del usuario
+        getline(cin, filename);
+        // Asignar valor por defecto si está vacío
+        if (filename.empty()) {
+            filename = "dataset_optimized.csv";
+            cout << "-> Usando archivo por defecto: " << filename << endl;
+        } else cout << "-> Buscando archivo: " << filename << endl;
 
-    // Capturar entrada del usuario
-    getline(cin, filename);
+        int inputSize = 0;
+        data = loadData(filename, inputSize);
 
-    // Asignar valor por defecto si está vacío
-    if (filename.empty()) {
-        filename = "dataset_optimized.csv";
-        cout << "-> Usando archivo por defecto: " << filename << endl;
-    } else {
-        cout << "-> Buscando archivo: " << filename << endl;
+        if(data.empty()) {
+            cerr << "[ERROR] No se pudo cargar el dataset: '" << filename << "'" << endl;
+            cerr << "Verifica que el archivo existe y tiene el formato correcto." << endl;
+            return -1;}
+        cout << "Dataset cargado (" << data.size() << " muestras). Input Size: " << inputSize << endl;
     }
-
-    int inputSize = 0;
-    vector<TrainingData> data = loadData(filename, inputSize);
-
-    if(data.empty()) {
-        cerr << "[ERROR] No se pudo cargar el dataset: '" << filename << "'" << endl;
-        cerr << "Verifica que el archivo existe y tiene el formato correcto." << endl;
-        return -1;
-    }
-    
-    cout << "Dataset cargado (" << data.size() << " muestras). Input Size: " << inputSize << endl;
-    cout << "Iniciando proceso evolutivo..." << endl;
-
+    string warmStartFile;
+    bool useWarmStart = false;
     // Inicialización de Población
-    NeuralNetwork dummyNN(inputSize, HIDDEN_NEURONS, OUTPUT_NEURONS);
+    
+    if (WARM_START) {
+        cout << "\n--- WARM START (Transfer Learning) ---" << endl;
+        cout << "Introduce nombre de cerebro para iniciar (Enter = 'brain.txt'): ";
+        getline(cin, warmStartFile);
+        if (warmStartFile.empty()) warmStartFile = "brain.txt";
+            if (ifstream(warmStartFile)) {
+            useWarmStart = true;
+            cout << ">>> WARM START ACTIVO: Iniciando poblacion basada en " << warmStartFile << endl;
+        } else {
+            cout << ">>> COLD START: No se encontro " << warmStartFile << ". Iniciando desde cero." << endl;
+        }
+    } 
+    NeuralNetwork dummyNN(WARM_START ? NeuralNetwork(warmStartFile) : NeuralNetwork(TOPOLOGY));
+
     int genomeSize = dummyNN.getWeightCount();
+    cout << "Iniciando proceso evolutivo..." << endl;
 
     vector<Genome> population(POPULATION_SIZE);
     mt19937 rng(time(0));
     uniform_real_distribution<> distWeight(-1.0, 1.0);
+    normal_distribution<> distMutation(0.0, 0.5);
 
-    for(auto& ind : population) {
-        ind.genes.resize(genomeSize);
-        for(double &g : ind.genes) g = distWeight(rng);
-        ind.fitness = 0;
+    vector<double> baseGenes = dummyNN.getWeights();
+
+    for(int i = 0; i < POPULATION_SIZE; i++) {
+        population[i].genes.resize(genomeSize);
+        population[i].fitness = -9999; // Reset fitness
+
+        if (useWarmStart) {
+            // ELITISM: El individuo 0 es una COPIA EXACTA
+            if (i == 0) {
+                population[i].genes = baseGenes;
+            } 
+            // DIVERSITY: El resto son clones con mutaciones (para explorar mejoras)
+            else {
+                for(size_t k=0; k < genomeSize; k++) {
+                    double gene = baseGenes[k];
+                    // Aplicar mutación suave al gen base
+                    if ((rand() % 100) < 30) { // 30% chance de mutar cada peso
+                        gene += distMutation(rng);
+                    }
+                    population[i].genes[k] = gene;
+                }
+            }
+        } 
+        else {
+            // COLD START: Ruido aleatorio total
+            for(double &g : population[i].genes) g = distWeight(rng);
+        }
+    }
+
+    vector<int> activeBytes;
+    if (REAL_FITNESS) {
+        activeBytes = getActiveBytes();
+        cout << "Mascara cargada: " << activeBytes.size() << " inputs." << endl;
     }
 
     // Bucle Principal de Evolución
@@ -274,8 +432,11 @@ int main(int argc, char** argv) {
         // Evaluación paralela de fitness
         #pragma omp parallel for
         for(int i=0; i<POPULATION_SIZE; i++) {
-            NeuralNetwork tempNN(inputSize, HIDDEN_NEURONS, OUTPUT_NEURONS);
-            population[i].fitness = calculateFitness(tempNN, population[i].genes, data);
+            NeuralNetwork tempNN(dummyNN.getTopology());
+            if (REAL_FITNESS) 
+                population[i].fitness = calculateRealFitness(tempNN, population[i].genes, activeBytes);
+            else
+                population[i].fitness = calculateFitness(tempNN, population[i].genes, data);
         }
 
         // Selección (Ordenamiento descendente por fitness)
@@ -288,7 +449,7 @@ int main(int argc, char** argv) {
 
         if(gen % 50 == 0) {
             dummyNN.setWeights(population[0].genes);
-            dummyNN.saveCompatibleFormat("brain_ga.txt"); 
+            dummyNN.save("brain_ga.txt"); 
         }
 
         // Generación de nueva población
@@ -331,8 +492,8 @@ int main(int argc, char** argv) {
 
     string outputFilename = MODEL_PREFIX + timestamp.str() + ".txt";
 
-    if (TIMESTAMPED_MODELS) dummyNN.saveCompatibleFormat(outputFilename);
-    dummyNN.saveCompatibleFormat("brain.txt");
+    if (TIMESTAMPED_MODELS) dummyNN.save(outputFilename);
+    dummyNN.save("brain.txt");
 
     cout << "Entrenamiento finalizado." << endl;
     return 0;

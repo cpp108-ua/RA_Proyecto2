@@ -9,6 +9,7 @@
 #include <random>
 #include <map>
 #include <iomanip>
+#include "NeuralNetwork.hpp"
 
 using namespace std;
 
@@ -16,13 +17,12 @@ const string MODEL_PREFIX = "BP_";
 const bool TIMESTAMPED_MODELS = true;
 
 // --- HIPERPARÁMETROS ---
-const double LEARNING_RATE = 0.01; 
-const double VALIDATION_SPLIT = 0.2; 
+const double LEARNING_RATE = 0.001;
 const double WEIGHT_DECAY = 0.0001;
+const double VALIDATION_SPLIT = 0.2; 
 const int EARLY_STOPPING_PATIENCE = 50;
 const int EPOCHS = 1000;            
-const int HIDDEN_NEURONS = 64; 
-const int OUTPUT_NEURONS = 18; 
+const vector<int> TOPOLOGY = {64, 32, 18};
 
 // --- FUNCIONES DE ACTIVACIÓN ---
 double sigmoid(double x) { return 1.0 / (1.0 + exp(-x)); }
@@ -60,7 +60,7 @@ struct TrainingData {
     vector<double> targets;
     int actionID;
 };
-
+/*
 // --- RED NEURONAL ---
 class NeuralNetwork {
 private:
@@ -75,13 +75,13 @@ private:
     string outputActivationFunc;
 
 public:
-    NeuralNetwork(int inputs, int hidden, int outputs, string hiddenActivation="relu", string outputActivation="sigmoid") 
-        : inputNodes(inputs), hiddenNodes(hidden), outputNodes(outputs) {
+    NeuralNetwork(vector<int> topology, string hiddenActivation="relu", string outputActivation="sigmoid") 
+        : inputNodes(topology[0]), hiddenNodes(topology[1]), outputNodes(topology[2]) {
         hiddenLayer.resize(hiddenNodes);
         outputLayer.resize(outputNodes);
         bHidden.resize(hiddenNodes);
         bOutput.resize(outputNodes);
-        wInputHidden.resize(inputs, vector<double>(hiddenNodes));
+        wInputHidden.resize(inputNodes, vector<double>(hiddenNodes));
         wHiddenOutput.resize(hiddenNodes, vector<double>(outputNodes));
         hiddenActivationFunc = hiddenActivation;
         outputActivationFunc = outputActivation;
@@ -193,7 +193,7 @@ public:
         for(int h=0; h<hiddenNodes; h++) bHidden[h] += LEARNING_RATE * hiddenGradients[h];
     }
 
-    void saveWeights(const string& filename) {
+    void save(const string& filename) {
         ofstream file(filename);
         if (!file.is_open()) return;
         file << inputNodes << " " << hiddenNodes << " " << outputNodes << "\n";
@@ -204,6 +204,7 @@ public:
         file.close();
     }
 };
+*/
 
 // --- CARGA Y BALANCEO DE DATOS ---
 vector<TrainingData> loadSmartBalancedData(const string& filename, int& inputSizeRef) {
@@ -251,8 +252,8 @@ vector<TrainingData> loadSmartBalancedData(const string& filename, int& inputSiz
         try { action = stoi(token); } catch(...) { continue; }
         
         sample.actionID = action;
-        sample.targets.resize(OUTPUT_NEURONS, 0.0);
-        if(action >= 0 && action < OUTPUT_NEURONS) sample.targets[action] = 1.0;
+        sample.targets.resize(TOPOLOGY.back(), 0.0);
+        if(action >= 0 && action < TOPOLOGY.back()) sample.targets[action] = 1.0;
 
         // --- LÓGICA DE CLASIFICACIÓN ---
         if (action == 0) {
@@ -354,7 +355,10 @@ int main(int argc, char** argv) {
     cout << " - Entrenamiento: " << data.size() << " muestras" << endl;
     cout << " - Validación: " << validationData.size() << " muestras" << endl;
 
-    NeuralNetwork nn(inputSize, HIDDEN_NEURONS, OUTPUT_NEURONS);
+    vector<int> topology = {inputSize};
+    topology.insert(topology.end(), TOPOLOGY.begin(), TOPOLOGY.end());
+    NeuralNetwork nn(topology);
+    
     cout << "Entrenando (1000 Epochs)..." << endl;
 
     // VARIABLES FOR EARLY STOPPING
@@ -407,8 +411,8 @@ int main(int argc, char** argv) {
             patienceCounter = 0; // Reset patience
             
             // Save this specific model because it's the best so far
-            if (TIMESTAMPED_MODELS) nn.saveWeights(outputFilename); 
-            nn.saveWeights("brain.txt");
+            if (TIMESTAMPED_MODELS) nn.save(outputFilename); 
+            nn.save("brain.txt");
             if (epoch % 10 == 0) cout << " [NEW BEST SAVED]";
         } else {
             // No improvement
