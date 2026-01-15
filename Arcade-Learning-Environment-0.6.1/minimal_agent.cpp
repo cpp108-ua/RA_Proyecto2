@@ -109,5 +109,6 @@ int main(int argc, char **argv) {
     dataFile.close();
     SDL_Quit();
     cout << "Sesión finalizada. Frames grabados: " << frameCount << endl;
+    cout << "Datos guardados en: " << outputFilename << endl;
     return 0;
 }

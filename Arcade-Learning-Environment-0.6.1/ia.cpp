@@ -117,7 +117,7 @@ private:
     std::vector<double> weights;       // Pesos asociados a cada modelo
 
 public:
-    
+    /*
     DecisionSystem(const std::vector<int>& activeBytes, int numModels) {
         // Inicialización de múltiples modelos
         for (int i = 0; i < numModels; i++) {
@@ -126,7 +126,7 @@ public:
             actionSpace.push_back(0);
         }
     }
-    
+    */
     DecisionSystem(const std::vector<std::string>& modelFiles) {
         // Inicialización desde archivos específicos
         for (const auto& file : modelFiles) {
