@@ -12,6 +12,9 @@
 
 using namespace std;
 
+const string MODEL_PREFIX = "BP_";
+const bool TIMESTAMPED_MODELS = true;
+
 // --- HIPERPARÁMETROS ---
 const double LEARNING_RATE = 0.01; 
 const double VALIDATION_SPLIT = 0.2; 
@@ -297,6 +300,21 @@ vector<TrainingData> loadSmartBalancedData(const string& filename, int& inputSiz
     return finalDataset;
 }
 
+// Obtener la fecha y hora actual para el nombre del archivo
+stringstream getTimeStmp() {
+    time_t now = time(0);
+    tm* localTime = localtime(&now);
+    stringstream timestamp;
+    timestamp << setw(2) << setfill('0') << localTime->tm_mday
+              << setw(2) << setfill('0') << (1 + localTime->tm_mon)
+              << setw(2) << setfill('0') << (localTime->tm_year % 100) 
+              << "_"
+              << setw(2) << setfill('0') << localTime->tm_hour
+              << setw(2) << setfill('0') << localTime->tm_min;
+
+    return timestamp;
+}
+
 int main(int argc, char** argv) {
     string filename;
 
@@ -318,6 +336,10 @@ int main(int argc, char** argv) {
         cerr << "[ERROR] No se pudieron cargar datos o el archivo esta vacio." << endl;
         return -1;
     }
+
+    stringstream timestamp = getTimeStmp();
+
+    string outputFilename = MODEL_PREFIX + timestamp.str() + ".txt";
 
     random_device rd;
     mt19937 g(rd());
@@ -385,13 +407,14 @@ int main(int argc, char** argv) {
             patienceCounter = 0; // Reset patience
             
             // Save this specific model because it's the best so far
-            nn.saveWeights("brain.txt"); 
+            if (TIMESTAMPED_MODELS) nn.saveWeights(outputFilename); 
+            nn.saveWeights("brain.txt");
             if (epoch % 10 == 0) cout << " [NEW BEST SAVED]";
         } else {
             // No improvement
             patienceCounter++;
             if (epoch % 10 == 0) cout << " [No improv: " << patienceCounter << "]";
-        } if (epoch % 10 == 0) cout << endl;
+        } if (epoch % 10 == 0 || epoch == 1) cout << endl;
 
         // Trigger Stop
         if (patienceCounter >= patience) {
@@ -403,5 +426,7 @@ int main(int argc, char** argv) {
     }
 
     cout << "\n[DONE] Entrenamiento finalizado." << endl;
+    cout << "Pesos se guardarán en: " << outputFilename << endl;
+
     return 0;
 }

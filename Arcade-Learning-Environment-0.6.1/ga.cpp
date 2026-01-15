@@ -9,6 +9,9 @@
 
 using namespace std;
 
+const bool TIMESTAMPED_MODELS = true;
+const string MODEL_PREFIX = "GA_";
+
 // Parámetros del Algoritmo Genético
 const int POPULATION_SIZE = 400;
 const double MUTATION_RATE = 0.20; 
@@ -198,6 +201,21 @@ double calculateFitness(NeuralNetwork& nn, const vector<double>& genes, const ve
     return score; 
 }
 
+// Obtener la fecha y hora actual para el nombre del archivo
+stringstream getTimeStmp() {
+    time_t now = time(0);
+    tm* localTime = localtime(&now);
+    stringstream timestamp;
+    timestamp << setw(2) << setfill('0') << localTime->tm_mday
+              << setw(2) << setfill('0') << (1 + localTime->tm_mon)
+              << setw(2) << setfill('0') << (localTime->tm_year % 100) 
+              << "_"
+              << setw(2) << setfill('0') << localTime->tm_hour
+              << setw(2) << setfill('0') << localTime->tm_min;
+
+    return timestamp;
+}
+
 int main(int argc, char** argv) {
     // Validación de argumentos CLI
     if (argc < 2) {
@@ -288,7 +306,14 @@ int main(int argc, char** argv) {
     
     // Guardado final del mejor modelo
     dummyNN.setWeights(population[0].genes);
-    dummyNN.saveCompatibleFormat("brain.txt"); 
+
+    stringstream timestamp = getTimeStmp();
+
+    string outputFilename = MODEL_PREFIX + timestamp.str() + ".txt";
+
+    if (TIMESTAMPED_MODELS) dummyNN.saveCompatibleFormat(outputFilename);
+    dummyNN.saveCompatibleFormat("brain.txt");
+
     cout << "Entrenamiento finalizado." << endl;
     return 0;
 }
