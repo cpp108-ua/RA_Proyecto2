@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <random>
 #include <iomanip>
+#include <string> // Aseguramos que string esté incluido
 
 using namespace std;
 
@@ -133,6 +134,10 @@ vector<TrainingData> loadData(const string& filename, int& inputSizeRef) {
     ifstream file(filename);
     string line, token;
 
+    if (!file.is_open()) {
+        return dataset; // Retorna vacio si falla
+    }
+
     // Detectar tamaño de entrada basado en cabecera
     if(getline(file, line)) {
         stringstream ss(line);
@@ -217,22 +222,37 @@ stringstream getTimeStmp() {
 }
 
 int main(int argc, char** argv) {
-    // Validación de argumentos CLI
-    if (argc < 2) {
-        cerr << "Uso: " << argv[0] << " <dataset.csv>" << endl;
-        return 1; 
+    // --- NUEVA LÓGICA DE INTERACCIÓN CON EL USUARIO ---
+    string filename;
+    
+    cout << "========================================" << endl;
+    cout << "      ENTRENAMIENTO GENETICO (GA)       " << endl;
+    cout << "========================================" << endl;
+    cout << "Introduce el nombre del dataset a utilizar:" << endl;
+    cout << "(Deja vacio y pulsa ENTER para usar 'dataset_optimized.csv'): ";
+
+    // Capturar entrada del usuario
+    getline(cin, filename);
+
+    // Asignar valor por defecto si está vacío
+    if (filename.empty()) {
+        filename = "dataset_optimized.csv";
+        cout << "-> Usando archivo por defecto: " << filename << endl;
+    } else {
+        cout << "-> Buscando archivo: " << filename << endl;
     }
 
-    string filename = argv[1];
     int inputSize = 0;
     vector<TrainingData> data = loadData(filename, inputSize);
 
     if(data.empty()) {
-        cerr << "Error: Dataset vacio o no encontrado: " << filename << endl;
+        cerr << "[ERROR] No se pudo cargar el dataset: '" << filename << "'" << endl;
+        cerr << "Verifica que el archivo existe y tiene el formato correcto." << endl;
         return -1;
     }
     
-    cout << "Dataset cargado. Iniciando entrenamiento Genético..." << endl;
+    cout << "Dataset cargado (" << data.size() << " muestras). Input Size: " << inputSize << endl;
+    cout << "Iniciando proceso evolutivo..." << endl;
 
     // Inicialización de Población
     NeuralNetwork dummyNN(inputSize, HIDDEN_NEURONS, OUTPUT_NEURONS);

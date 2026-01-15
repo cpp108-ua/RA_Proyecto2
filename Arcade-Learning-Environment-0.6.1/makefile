@@ -10,7 +10,7 @@ OPT_FLAGS = -O3
 # --- OBJETIVOS ---
 
 # Escribe 'make' o 'make all' para compilar todo
-all: minimal_agent bp ga ia
+all: minimal_agent bp ga ia heatmap cleaner
 
 minimal_agent: minimal_agent.cpp
 	$(CXX) minimal_agent.cpp -o minimal_agent $(ALE_FLAGS)
@@ -24,5 +24,11 @@ ga: ga.cpp
 ia: ia.cpp
 	$(CXX) ia.cpp -o ia $(ALE_FLAGS)
 
+heatmap: heatmap.cpp
+	$(CXX) heatmap.cpp -o heatmap $(OPT_FLAGS)
+
+cleaner: cleaner.cpp
+	$(CXX) cleaner.cpp -o cleaner $(OPT_FLAGS)
+
 clean:
-	rm -f minimal_agent bp ga ia
+	rm -f minimal_agent bp ga ia heatmap cleaner
