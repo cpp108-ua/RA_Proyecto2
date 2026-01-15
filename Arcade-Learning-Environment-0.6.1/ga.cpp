@@ -19,11 +19,14 @@ const bool TIMESTAMPED_MODELS = true;
 const string MODEL_PREFIX = "GA_";
 
 // Parámetros del Algoritmo Genético
-const int POPULATION_SIZE = 200;
+const int POPULATION_SIZE = 150;
+const int GENERATIONS = 200;
+const int FRAMES_PER_EPISODE = 3600;
+const int FRAME_SKIP = 4;
 const double MUTATION_RATE = 0.20; 
 const double MUTATION_STRENGTH = 2.0; 
 const int ELITISM_COUNT = 5;
-const int GENERATIONS = 500;
+
 
 // Arquitectura de la Red
 const vector<int> TOPOLOGY = {64, 32, 18};
@@ -219,8 +222,8 @@ double calculateRealFitness(NeuralNetwork& net, const vector<double>& genes, vec
 
     ale.setInt("random_seed", 123); 
     ale.setFloat("repeat_action_probability", 0.0); 
-    ale.setInt("frame_skip", 4);
-    ale.setInt("max_num_frames_per_episode", 7200);
+    ale.setInt("frame_skip", FRAME_SKIP);
+    ale.setInt("max_num_frames_per_episode", FRAMES_PER_EPISODE);
 
     ale.loadROM("supported/assault.bin");
 
