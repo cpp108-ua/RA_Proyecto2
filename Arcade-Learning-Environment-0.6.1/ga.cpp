@@ -27,7 +27,6 @@ const double MUTATION_RATE = 0.20;
 const double MUTATION_STRENGTH = 2.0; 
 const int ELITISM_COUNT = 5;
 
-
 // Arquitectura de la Red
 const vector<int> TOPOLOGY = {64, 32, 18};
 
@@ -36,126 +35,6 @@ struct TrainingData {
     vector<double> inputs;
     vector<double> targets; 
 };
-
-/*
-class NeuralNetwork {
-private:
-    // Ex. {128, 64, 32, 18} -> 128 Input, 64 Hidden, 32 Hidden, 18 Output
-    vector<int> topology;
-    vector<double> weights; 
-
-public:
-    NeuralNetwork(const vector<int>& topologyStructure) : topology(topologyStructure) {
-        int totalWeights = 0;
-        
-        // Calculate total weights needed for the DNA
-        // For every layer i and i+1: Weights = (Node_i * Node_i+1) + Bias_i+1
-        for (size_t i = 0; i < topology.size() - 1; ++i) {
-            int inputSize = topology[i];
-            int outputSize = topology[i + 1];
-            totalWeights += (inputSize * outputSize) + outputSize;
-        }
-
-        weights.resize(totalWeights);
-    }
-
-    // Inicialización de pesos usando distribución uniforme
-    void randomize() {
-        random_device rd;
-        mt19937 gen(rd());
-        uniform_real_distribution<> dis(-0.2, 0.2); 
-        
-        for(double &w : weights) w = dis(gen); 
-    }
-
-    void setWeights(const vector<double>& newWeights) {
-        if(newWeights.size() == weights.size()) weights = newWeights;
-    }
-
-    vector<double> getWeights() const { return weights; }
-    int getWeightCount() const { return weights.size(); }
-
-    // Funciones de activación
-    double sigmoid(double x) { return 1.0 / (1.0 + exp(-x)); }
-    double relu(double x) { return (x > 0) ? x : 0; }
-
-    // Forward Propagation
-    vector<double> feedForward(vector<double> currentValues) {
-        int wIdx = 0;
-
-        // Loop through each connection between layers
-        for (size_t i = 0; i < topology.size() - 1; ++i) {
-            
-            vector<double> nextValues; // The values for the next layer
-            int currentSize = topology[i];
-            int nextSize = topology[i + 1];
-            
-            // Check if this is the very last layer (to use Sigmoid)
-            bool isOutputLayer = (i == topology.size() - 2);
-
-            // Process every neuron in the NEXT layer
-            for (int n = 0; n < nextSize; ++n) {
-                double sum = 0.0;
-                
-                // Dot Product: Previous Layer Inputs * Weights
-                for (int c = 0; c < currentSize; ++c) {
-                    sum += currentValues[c] * weights[wIdx++];
-                }
-                
-                // Add Bias
-                sum += weights[wIdx++];
-
-                // Apply Activation
-                if (isOutputLayer) {
-                    nextValues.push_back(sigmoid(sum));
-                } else {
-                    nextValues.push_back(relu(sum));
-                }
-            }
-            
-            // Move forward: Next layer becomes current layer for next iteration
-            currentValues = nextValues;
-        }
-        
-        return currentValues; // Final Output
-    }
-
-    // Serialización de pesos a formato matricial para importación en motor de juego
-    void saveCompatibleFormat(const string& filename) {
-        ofstream file(filename);
-        if(!file.is_open()) return;
-        
-        // 1. Header: Number of Layers
-        file << topology.size() << "\n";
-        
-        // 2. Header: Size of each layer
-        for(int size : topology) file << size << " ";
-        file << "\n";
-        
-        // 3. Dump Weights (Formatted for readability, though flat would work too)
-        int wIdx = 0;
-        for (size_t i = 0; i < topology.size() - 1; ++i) {
-            int rows = topology[i];
-            int cols = topology[i+1];
-
-            // Save Matrix for this layer transition
-            for(int c=0; c<cols; c++) { // For each neuron in next layer
-                // Weights
-                for(int r=0; r<rows; r++) file << weights[wIdx++] << " ";
-                // Bias
-                file << weights[wIdx++] << " "; 
-                file << "\n";
-            }
-            file << "\n";
-        }
-        file.close();
-    }
-
-    int getOutputSize() const {
-        return topology.back();
-    }
-};
-*/
 
 struct Genome {
     vector<double> genes;

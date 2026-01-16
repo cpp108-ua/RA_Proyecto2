@@ -9,106 +9,6 @@
 #include <SDL/SDL.h> 
 #include "NeuralNetwork.hpp"
 
-// --- FUNCIONES DE ACTIVACIÓN ---
-double sigmoid(double x) { return 1.0 / (1.0 + exp(-x)); }
-double relu(double x) { return (x > 0) ? x : 0; }
-/*
-// --- MOTOR DE INFERENCIA ---
-class NeuralNetwork {
-private:
-    int inputNodes, hiddenNodes, outputNodes;
-    std::vector<std::vector<double>> wInputHidden;
-    std::vector<std::vector<double>> wHiddenOutput;
-    std::vector<double> bHidden;
-    std::vector<double> bOutput;
-    std::vector<double> hiddenLayer; // Buffer de activaciones
-
-public:
-    NeuralNetwork(const std::vector<int>& activeBytes) {
-        // Inicialización del Modelo
-        if (!loadWeights("brain.txt")) {
-            std::cerr << "[ERROR] No se pudo cargar 'brain.txt'." << std::endl;
-            SDL_Quit();
-            exit(1);
-        }
-
-        // Validación de dimensiones
-        if (getInputSize() != activeBytes.size()) {
-            std::cerr << "[FATAL] Dimension mismatch: Red(" << getInputSize()
-                      << ") != Mascara(" << activeBytes.size() << ")." << std::endl;
-            SDL_Quit();
-            exit(1);
-        }
-    }
-
-    // Carga de parámetros serializados
-    bool loadWeights(const std::string& filename) {
-        std::ifstream file(filename);
-        if (!file.is_open()) return false;
-
-        // 1. Topología
-        file >> inputNodes >> hiddenNodes >> outputNodes;
-
-        // 2. Asignación de recursos
-        wInputHidden.resize(inputNodes, std::vector<double>(hiddenNodes));
-        wHiddenOutput.resize(hiddenNodes, std::vector<double>(outputNodes));
-        bHidden.resize(hiddenNodes);
-        bOutput.resize(outputNodes);
-        hiddenLayer.resize(hiddenNodes);
-
-        // 3. Deserialización de Matrices y Bias
-        // Orden estricto: wIH -> bH -> wHO -> bO
-        for(int i=0; i<inputNodes; i++)
-            for(int h=0; h<hiddenNodes; h++)
-                file >> wInputHidden[i][h];
-
-        for(int h=0; h<hiddenNodes; h++) file >> bHidden[h];
-
-        for(int h=0; h<hiddenNodes; h++)
-            for(int o=0; o<outputNodes; o++)
-                file >> wHiddenOutput[h][o];
-
-        for(int o=0; o<outputNodes; o++) file >> bOutput[o];
-
-        file.close();
-        return true;
-    }
-
-    // Forward Propagation (Inferencia)
-    int predict(const std::vector<double>& inputs) {
-        
-        // A. Capa Oculta (Activación ReLU)
-        for(int h=0; h<hiddenNodes; h++) {
-            double sum = bHidden[h];
-            for(int i=0; i<inputNodes; i++) {
-                sum += inputs[i] * wInputHidden[i][h];
-            }
-            hiddenLayer[h] = relu(sum);
-        }
-
-        // B. Capa de Salida (Activación Sigmoid + ArgMax)
-        int bestAction = 0;
-        double maxProb = -9999.0;
-
-        for(int o=0; o<outputNodes; o++) {
-            double sum = bOutput[o];
-            for(int h=0; h<hiddenNodes; h++) {
-                sum += hiddenLayer[h] * wHiddenOutput[h][o];
-            }
-            double outputVal = sigmoid(sum); // Probabilidad [0,1]
-
-            // Selección Greedy
-            if (outputVal > maxProb) {
-                maxProb = outputVal;
-                bestAction = o;
-            }
-        }
-        return bestAction;
-    }
-    
-    int getInputSize() const { return inputNodes; }
-};
-*/
 // --- SISTEMA DECISIONAL ---
 class DecisionSystem {
 private:
@@ -117,16 +17,6 @@ private:
     std::vector<double> weights;       // Pesos asociados a cada modelo
 
 public:
-    /*
-    DecisionSystem(const std::vector<int>& activeBytes, int numModels) {
-        // Inicialización de múltiples modelos
-        for (int i = 0; i < numModels; i++) {
-            models.emplace_back(activeBytes);
-            weights.push_back(1.0 / numModels); // Pesos iniciales uniformes
-            actionSpace.push_back(0);
-        }
-    }
-    */
     DecisionSystem(const std::vector<std::string>& modelFiles) {
         // Inicialización desde archivos específicos
         for (const auto& file : modelFiles) {
