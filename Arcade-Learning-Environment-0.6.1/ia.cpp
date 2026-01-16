@@ -33,6 +33,22 @@ public:
             weights.push_back(1.0 / modelFiles.size());
             actionSpace.push_back(0);
         }
+
+        std::cout << "Decision System initialized with " << models.size() << " models." << std::endl;
+        for (size_t i = 0; i < models.size(); i++) {
+            std::cout << " - Model " << i << ": Input Size = " 
+                      << models[i].getInputSize() << std::endl;
+        }
+    }
+
+    bool checkInputSize(int size) {
+        for (const auto& model : models) {
+            if (model.getInputSize() != size) {
+                std::cerr << "[ERROR] Input size mismatch with model." << std::endl;
+                return false;
+            }
+        }
+        return true;
     }
 
     // Predicción basada en votación ponderada
@@ -93,7 +109,8 @@ void runInference(const std::string& romFile) {
     }
 
     // Inicialización del Modelo
-    DecisionSystem brain(vector<string>({"dat/BP_160126_0945.txt"}));
+    DecisionSystem brain(vector<string>({"dat/brain_ga.txt"}));
+    brain.checkInputSize(fastInputMap.size());
     
     std::cout << "--- INFERENCIA INICIADA (Bit-Level) ---" << std::endl;
 
