@@ -5,153 +5,132 @@
 #include <cmath>
 #include <algorithm>
 #include <iomanip>
-#include <string> // Necesario para getline
+#include <string>
 
-// --- CONFIGURACIÓN ---
-const int RAM_SIZE = 128;
-const double NOISE_THRESHOLD = 0.0; // Subir a 0.01 si se quiere filtrar cambios mínimos
+// --- CONFIGURATION ---
+const double NOISE_THRESHOLD = 0.0; // Keep 0.0 to capture any change, 0.01 to filter distinct noise
 
-struct ByteStats {
-    int id;
+struct BitStat {
+    int globalIndex; // The ID from 0 to 1023
+    std::string name; // "ram_10_b7"
     double stdDev;
 };
 
-// --- UTILIDADES VISUALES ---
-std::string getANSIColor(double intensity) {
-    if (intensity < 0.05) return "\033[48;5;232m"; // Negro (Inactivo)
-    if (intensity < 0.20) return "\033[48;5;24m";  // Azul Oscuro
-    if (intensity < 0.40) return "\033[48;5;33m";  // Azul Claro
-    if (intensity < 0.60) return "\033[48;5;208m"; // Naranja
-    return "\033[48;5;196m";                       // Rojo (Hotspot)
+// --- HELPER: Parse "ram_10_b7" to Global Index ---
+// Formula: Byte * 8 + (7 - Bit) 
+// We use (7-Bit) because we push bits MSB first (7,6...0)
+int parseHeaderToGlobalIndex(const std::string& header) {
+    try {
+        size_t ramPos = header.find("ram_");
+        size_t bPos = header.find("_b");
+        
+        if (ramPos == std::string::npos || bPos == std::string::npos) return -1;
+
+        int byteIdx = std::stoi(header.substr(ramPos + 4, bPos - (ramPos + 4)));
+        int bitIdx = std::stoi(header.substr(bPos + 2));
+
+        return (byteIdx * 8) + (7 - bitIdx);
+    } catch (...) {
+        return -1;
+    }
 }
 
-// --- LÓGICA PRINCIPAL ---
 int main(int argc, char **argv) {
     std::string filename;
 
-    // --- INTERACCIÓN CON EL USUARIO ---
     std::cout << "========================================" << std::endl;
-    std::cout << "   ANALIZADOR DE VARIANZA DE RAM (ALE)  " << std::endl;
+    std::cout << "   BIT-LEVEL VARIANCE ANALYZER          " << std::endl;
     std::cout << "========================================" << std::endl;
-    std::cout << "Introduce el nombre del archivo CSV a analizar: " << std::endl;
-    std::cout << "(Deja vacio y pulsa ENTER para usar 'dataset.csv'): ";
+    std::cout << "Enter bit-level CSV (Enter = 'dat/dataset_bin_full.csv'): ";
     
     std::getline(std::cin, filename);
-
-    // Si el usuario no escribe nada, usamos el default
-    if (filename.empty()) {
-        filename = "dataset.csv";
-        std::cout << "-> Usando archivo por defecto: " << filename << std::endl;
-    } else {
-        std::cout << "-> Buscando archivo: " << filename << std::endl;
-    }
+    if (filename.empty()) filename = "dat/dataset_bin_full.csv";
     
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "\n[ERROR] No se pudo abrir el archivo '" << filename << "'" << std::endl;
-        std::cerr << "Verifica que el nombre es correcto y que el archivo existe en esta carpeta." << std::endl;
+        std::cerr << "[ERROR] Could not open '" << filename << "'" << std::endl;
         return -1;
     }
 
-    // ACUMULADORES ESTADÍSTICOS
-    std::vector<double> sum(RAM_SIZE, 0.0);
-    std::vector<double> sumSq(RAM_SIZE, 0.0);
+    // --- 1. READ HEADER ---
+    std::string line, token;
+    std::getline(file, line); // Read first line
+    std::stringstream headerSS(line);
+    
+    std::vector<int> columnToGlobalIndex;
+    std::vector<std::string> columnNames;
+
+    // Map columns to real RAM IDs
+    while (std::getline(headerSS, token, ',')) {
+        if (token == "action") break; // Stop at action
+        columnNames.push_back(token);
+        columnToGlobalIndex.push_back(parseHeaderToGlobalIndex(token));
+    }
+
+    int numColumns = columnNames.size();
+    std::cout << "Detected " << numColumns << " bit columns." << std::endl;
+
+    // --- 2. ACCUMULATE STATS ---
+    std::vector<double> sum(numColumns, 0.0);
+    std::vector<double> sumSq(numColumns, 0.0);
     long long n = 0;
 
-    std::string line, token;
-    
-    // Detectar si el archivo tiene cabecera y saltarla
-    char peek = file.peek();
-    if (!isdigit(peek)) std::getline(file, line); 
+    std::cout << "Analyzing variance..." << std::endl;
 
-    std::cout << "Analizando datos..." << std::endl;
-
-    // PROCESAMIENTO DE DATOS
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         std::stringstream ss(line);
-        int val;
-    
-        for (int i = 0; i < RAM_SIZE; ++i) {
+        double val;
+
+        for (int i = 0; i < numColumns; ++i) {
             std::getline(ss, token, ',');
             try {
-                if (!token.empty()) {
-                    val = std::stoi(token);
-                    sum[i] += val;
-                    sumSq[i] += (val * val);
-                }
-            } catch (...) { continue; }
+                val = std::stod(token); // Reads 0.0 or 1.0
+                sum[i] += val;
+                sumSq[i] += (val * val);
+            } catch (...) {}
         }
         n++;
     }
 
-    // CÁLCULO DE DESVIACIÓN ESTÁNDAR
-    std::vector<ByteStats> stats(RAM_SIZE);
-    double maxStdDev = 0.0;
+    if (n == 0) {
+        std::cerr << "[ERROR] No data rows found." << std::endl;
+        return -1;
+    }
 
-    for (int i = 0; i < RAM_SIZE; ++i) {
+    // --- 3. CALCULATE & EXPORT ---
+    std::ofstream maskFile("dat/bit_mask.txt");
+    int activeBits = 0;
+
+    std::cout << "\n--- TOP ACTIVE BITS ---" << std::endl;
+    std::cout << "Global ID | Name       | StdDev" << std::endl;
+
+    for (int i = 0; i < numColumns; ++i) {
         double mean = sum[i] / n;
         double variance = (sumSq[i] / n) - (mean * mean);
-        if (variance < 0) variance = 0; 
-        
-        stats[i].id = i;
-        stats[i].stdDev = std::sqrt(variance);
+        if (variance < 0) variance = 0;
+        double stdDev = std::sqrt(variance);
 
-        if (stats[i].stdDev > maxStdDev) maxStdDev = stats[i].stdDev;
-    }
+        // If this bit actually changes (StdDev > 0)
+        if (stdDev > NOISE_THRESHOLD) {
+            // Write the GLOBAL INDEX to the mask file
+            if (columnToGlobalIndex[i] != -1) {
+                maskFile << columnToGlobalIndex[i] << std::endl;
+                activeBits++;
 
-    // 4. REPORTE: TOP 10 BYTES ACTIVOS
-    std::vector<ByteStats> sortedStats = stats;
-    std::sort(sortedStats.begin(), sortedStats.end(), [](const ByteStats& a, const ByteStats& b) {
-        return a.stdDev > b.stdDev;
-    });
-
-    std::cout << "\n--- TOP 10 BYTES MÁS SIGNIFICATIVOS ---" << std::endl;
-    std::cout << "Byte ID | Desviación | Interpretación Potencial" << std::endl;
-    for (int i = 0; i < 10; ++i) {
-        std::cout << std::setw(7) << sortedStats[i].id << " | " 
-                  << std::setw(10) << std::fixed << std::setprecision(4) << sortedStats[i].stdDev << " | ";
-        
-        if (sortedStats[i].stdDev > 50) std::cout << "Posición / Temporizador Global";
-        else if (sortedStats[i].stdDev > 10) std::cout << "Estado de Entidad / Animación";
-        else std::cout << "Bandera de estado / Contador lento";
-        std::cout << std::endl;
-    }
-
-    // VISUALIZACIÓN: MAPA DE CALOR
-    std::cout << "\n--- MAPA DE ACTIVIDAD DE RAM (128 Bytes) ---" << std::endl;
-    std::cout << "     ";
-    for(int c=0; c<16; c++) std::cout << std::setw(3) << c << " ";
-    std::cout << "\n    +" << std::string(16*4, '-') << "+";
-
-    for (int row = 0; row < 8; ++row) {
-        std::cout << "\n" << std::setw(3) << (row * 16) << " |";
-        for (int col = 0; col < 16; ++col) {
-            int index = row * 16 + col;
-            double intensity = (maxStdDev > 0) ? (stats[index].stdDev / maxStdDev) : 0;
-            
-            std::cout << getANSIColor(intensity) 
-                      << std::setw(3) << index 
-                      << "\033[0m ";
-        }
-        std::cout << "|";
-    }
-    std::cout << "\nTotal Frames: " << n << std::endl;
-
-    // EXPORTACIÓN DE MÁSCARA
-    std::ofstream maskFile("mask.txt");
-    int activeCount = 0;
-    
-    for (int i = 0; i < RAM_SIZE; ++i) {
-        if (stats[i].stdDev > NOISE_THRESHOLD) { 
-            maskFile << i << std::endl;
-            activeCount++;
+                // Print top info (optional filter for screen clutter)
+                if (activeBits <= 10 || stdDev > 0.4) {
+                    std::cout << std::setw(9) << columnToGlobalIndex[i] << " | "
+                              << std::setw(10) << columnNames[i] << " | "
+                              << std::fixed << std::setprecision(4) << stdDev << std::endl;
+                }
+            }
         }
     }
     maskFile.close();
-    
-    std::cout << "\n[OK] 'mask.txt' generado correctamente." << std::endl;
-    std::cout << "Input reducido de 128 a " << activeCount << " dimensiones." << std::endl;
+
+    std::cout << "\n[SUCCESS] Generated 'bit_mask.txt'" << std::endl;
+    std::cout << "Kept " << activeBits << " active bits out of " << numColumns << "." << std::endl;
 
     return 0;
 }

@@ -39,68 +39,91 @@ vector<TrainingData> loadSmartBalancedData(const string& filename, int& inputSiz
 
     if (!file.is_open()) return {};
 
-    // Detectar tamaño de inputs
+    // 1. DETECT INPUT SIZE (Column Count)
     if(getline(file, line)) {
         stringstream ss(line);
         int cols = 0;
+        // Count commas to determine columns
         while(getline(ss, token, ',')) cols++;
+        
+        // The last column is 'action', so inputSize is cols - 1
         inputSizeRef = cols - 1; 
     }
     
-    // Reiniciar lectura
+    // Reset file to beginning
     file.clear();
     file.seekg(0);
     
-    // Saltar cabecera si existe
+    // Skip Header if present (checks if first char is NOT a digit)
     char peek = file.peek();
     if (!isdigit(peek)) getline(file, line); 
 
-    cout << "Clasificando datos..." << endl;
+    cout << "Loading Bit-Level Data (Size: " << inputSizeRef << ")..." << endl;
+
+    int lineCount = 0;
 
     while(getline(file, line)) {
         if(line.empty()) continue;
         stringstream ss(line);
         TrainingData sample;
-        
+        sample.inputs.reserve(inputSizeRef);
+
+        // 2. READ INPUTS
         for(int i=0; i<inputSizeRef; i++) {
             getline(ss, token, ',');
             try {
-                sample.inputs.push_back(stod(token) / 255.0);
-            } catch(...) { sample.inputs.push_back(0); }
+                double val = stod(token); 
+                sample.inputs.push_back(val);
+            } catch(...) { sample.inputs.push_back(0.0); }
         }
 
+        // 3. READ TARGET (ACTION)
         getline(ss, token, ',');
         int action = 0;
         try { action = stoi(token); } catch(...) { continue; }
         
         sample.actionID = action;
+        
+        // Ensure vector is big enough for the action
+        // (Assumes TOPOLOGY.back() is your output size, usually 18)
+        if (TOPOLOGY.empty()) { cerr << "Error: Topology not defined"; return {}; }
         sample.targets.resize(TOPOLOGY.back(), 0.0);
-        if(action >= 0 && action < TOPOLOGY.back()) sample.targets[action] = 1.0;
+        
+        if(action >= 0 && action < TOPOLOGY.back()) {
+            sample.targets[action] = 1.0;
+        }
 
-        // --- LÓGICA DE CLASIFICACIÓN ---
+        // 4. BALANCING (CLASSIFICATION)
+        // Adjust these IDs based on your specific game (Assault)
         if (action == 0) {
             groupNoop.push_back(sample);
         } 
         else if (action == 2 || action == 10 || action == 11 || action == 1) { 
+            // Fire, UpFire, DownFire...
             groupFire.push_back(sample);
         } 
         else {
+            // Movement
             groupMove.push_back(sample);
         }
+        lineCount++;
     }
     
+    // 5. UPSAMPLING STRATEGY
     size_t maxActiveSize = 0;
     if (!groupMove.empty()) maxActiveSize = max(maxActiveSize, groupMove.size());
     if (!groupFire.empty()) maxActiveSize = max(maxActiveSize, groupFire.size());
 
+    // Ensure we have at least 500 samples per group if possible
     size_t targetSize = max(maxActiveSize, size_t(500));
     
-
     vector<TrainingData> finalDataset;
+    finalDataset.reserve(targetSize * 3); // Pre-allocate memory
+
     random_device rd;
     mt19937 g(rd());
 
-    // Función lambda para rellenar (Upsampling circular)
+    // Helper Lambda: Circular Upsampling
     auto fillGroup = [&](vector<TrainingData>& source, int count) {
         if (source.empty()) return;
         for(int i=0; i<count; i++) {
@@ -108,18 +131,25 @@ vector<TrainingData> loadSmartBalancedData(const string& filename, int& inputSiz
         }
     };
 
+    // Shuffle original groups before sampling
     shuffle(groupNoop.begin(), groupNoop.end(), g);
     shuffle(groupMove.begin(), groupMove.end(), g);
     shuffle(groupFire.begin(), groupFire.end(), g);
 
-    // Rellenamos basándonos en el tamaño dinámico calculado
-    fillGroup(groupNoop, targetSize / 2); // Menos NoOp para priorizar acción
+    // Apply balancing
+    // We intentionally under-sample NoOp to make the AI more aggressive
+    fillGroup(groupNoop, targetSize / 3); 
     fillGroup(groupMove, targetSize);
     fillGroup(groupFire, targetSize); 
 
+    // Final shuffle so types are mixed
     shuffle(finalDataset.begin(), finalDataset.end(), g);
     
-    cout << "Dataset final preparado con " << finalDataset.size() << " muestras." << endl;
+    cout << "Dataset Prepared:" << endl;
+    cout << " - Raw Lines: " << lineCount << endl;
+    cout << " - Balanced Total: " << finalDataset.size() << endl;
+    cout << " - Input Size: " << inputSizeRef << endl;
+
     return finalDataset;
 }
 
@@ -145,10 +175,10 @@ int main(int argc, char** argv) {
     cout << "========================================" << endl;
     cout << "      ENTRENADOR DE RED NEURONAL        " << endl;
     cout << "========================================" << endl;
-    cout << "Introduce el dataset a usar (Enter = 'dataset_optimized.csv'): ";
+    cout << "Introduce el dataset a usar (Enter = 'dat/dataset_bin_optimized.csv'): ";
     
     getline(cin, filename);
-    if (filename.empty()) filename = "dataset_optimized.csv";
+    if (filename.empty()) filename = "dat/dataset_bin_optimized.csv";
 
     cout << "-> Cargando: " << filename << endl;
 
@@ -162,7 +192,7 @@ int main(int argc, char** argv) {
 
     stringstream timestamp = getTimeStmp();
 
-    string outputFilename = MODEL_PREFIX + timestamp.str() + ".txt";
+    string outputFilename = "dat/" + MODEL_PREFIX + timestamp.str() + ".txt";
 
     random_device rd;
     mt19937 g(rd());
@@ -234,7 +264,7 @@ int main(int argc, char** argv) {
             
             // Save this specific model because it's the best so far
             if (TIMESTAMPED_MODELS) nn.save(outputFilename); 
-            nn.save("brain.txt");
+            nn.save("dat/brain.txt");
             if (epoch % 10 == 0) cout << " [NEW BEST SAVED]";
         } else {
             // No improvement

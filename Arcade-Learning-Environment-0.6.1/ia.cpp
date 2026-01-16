@@ -9,11 +9,20 @@
 #include <SDL/SDL.h> 
 #include "NeuralNetwork.hpp"
 
-// --- SISTEMA DECISIONAL ---
+using namespace std;
+
+// --- OPTIMIZATION STRUCT ---
+// Maps a Neural Network input node directly to a specific bit in RAM
+struct BitLocation {
+    int byteIndex; // RAM Byte (0-127)
+    int bitShift;  // Bit offset (0-7)
+};
+
+// --- SYSTEM DECISIONAL ---
 class DecisionSystem {
 private:
     std::vector<NeuralNetwork> models; // Conjunto de modelos
-    std::vector<int> actionSpace;    // Espacio de acciones
+    std::vector<int> actionSpace;      // Espacio de acciones
     std::vector<double> weights;       // Pesos asociados a cada modelo
 
 public:
@@ -28,42 +37,22 @@ public:
 
     // Predicción basada en votación ponderada
     int predict(const std::vector<double>& inputs) {
-        std::vector<double> actionScores(models[0].getInputSize(), 0.0);
+        // FIX: Size must be 18 (ALE Max Actions), not InputSize (which could be small)
+        std::vector<double> actionScores(18, 0.0);
 
         // Acumulación de predicciones ponderadas
         for (size_t i = 0; i < models.size(); i++) {
             int action = models[i].predict(inputs);
-            actionSpace[i] = action;
-            actionScores[action] += weights[i];
+            
+            // Safety check for action bounds
+            if(action >= 0 && action < 18) {
+                actionScores[action] += weights[i];
+            }
         }
 
         // Selección de la acción con mayor puntuación
         return std::distance(actionScores.begin(),
                              std::max_element(actionScores.begin(), actionScores.end()));
-    }
-
-    // Actualización de pesos (boosting)
-    void updateWeightsBoosting(const std::vector<double>& errors, const std::vector<int>& gains) {
-        for (size_t i = 0; i < weights.size(); i++) {
-            weights[i] *= exp(-errors[i]); // Penalización basada en error
-        }
-
-        for (size_t i = 0; i < weights.size(); i++) {
-            weights[i] *= (1.0 + gains[i] * 0.1); // Recompensa por ganancia
-        }
-
-        // Normalización de pesos
-        double sumWeights = std::accumulate(weights.begin(), weights.end(), 0.0);
-        for (double& weight : weights) {
-            weight /= sumWeights;
-        }
-    }
-
-    void updateWeightsUniform() {
-        double uniformWeight = 1.0 / weights.size();
-        for (double& weight : weights) {
-            weight = uniformWeight;
-        }
     }
 };
 
@@ -79,34 +68,54 @@ void runInference(const std::string& romFile) {
     alei.setBool("sound", true);
     alei.loadROM(romFile);
 
-    // Carga de Máscara (Feature Selection)
-    std::vector<int> activeBytes;
-    std::ifstream maskFile("mask.txt");
+    // --- CARGA DE MÁSCARA (BIT-LEVEL) ---
+    std::vector<BitLocation> fastInputMap;
+    std::ifstream maskFile("dat/bit_mask.txt"); // Prioritize the BIT mask
+    
     if (maskFile.is_open()) {
-        int idx;
-        while (maskFile >> idx) activeBytes.push_back(idx);
+        std::cout << "Loading Bit Mask (Optimized)..." << std::endl;
+        int globalIdx;
+        while (maskFile >> globalIdx) {
+            // Convert Global ID (0-1023) back to Byte/Bit logic
+            // Logic must match 'recorder_bits.cpp'
+            int byteIndex = globalIdx / 8;        
+            int bitOffset = 7 - (globalIdx % 8); // MSB First
+            
+            fastInputMap.push_back({byteIndex, bitOffset});
+        }
         maskFile.close();
-        std::cout << "Mascara activa: " << activeBytes.size() << " inputs." << std::endl;
+        std::cout << "Active Inputs: " << fastInputMap.size() << " bits." << std::endl;
     } else {
-        for (int i = 0; i < 128; i++) activeBytes.push_back(i);
-        std::cout << "[WARN] Usando máscara default (128 bytes)." << std::endl;
+        std::cout << "[WARN] 'bit_mask.txt' not found. Defaulting to FULL RAM (1024 bits)." << std::endl;
+        for(int i = 0; i < 1024; ++i) {
+             fastInputMap.push_back({i / 8, 7 - (i % 8)});
+        }
     }
 
     // Inicialización del Modelo
-    //DecisionSystem brain(activeBytes, 1); // Usando un solo modelo por simplicidad
-    DecisionSystem brain(vector<string>({"brain.txt"}));
-    std::cout << "--- INFERENCIA INICIADA (ReLU/Sigmoid) ---" << std::endl;
+    DecisionSystem brain(vector<string>({"dat/BP_160126_0945.txt"}));
+    
+    std::cout << "--- INFERENCIA INICIADA (Bit-Level) ---" << std::endl;
+
+    // Pre-allocate input vector to avoid re-allocation every frame
+    std::vector<double> inputs;
+    inputs.reserve(fastInputMap.size());
 
     // Game Loop
     while (!alei.game_over()) {
         // 1. Obtención de estado
         const ALERAM& ram = alei.getRAM();
-        std::vector<double> inputs;
-        inputs.reserve(activeBytes.size());
+        
+        // Reset Inputs
+        inputs.clear();
 
-        // 2. Normalización [0, 255] -> [0.0, 1.0]
-        for (int idx : activeBytes) {
-            inputs.push_back(ram.get(idx) / 255.0);
+        // 2. EXTRACTION (BIT-LEVEL FAST MAP)
+        for (const auto& loc : fastInputMap) {
+            int byteVal = ram.get(loc.byteIndex);
+            
+            // Extract specific bit
+            double bit = (byteVal >> loc.bitShift) & 1;
+            inputs.push_back(bit);
         }
 
         // 3. Predicción

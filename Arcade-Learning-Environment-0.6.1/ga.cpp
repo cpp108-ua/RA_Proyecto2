@@ -19,8 +19,8 @@ const bool TIMESTAMPED_MODELS = true;
 const string MODEL_PREFIX = "GA_";
 
 // Parámetros del Algoritmo Genético
-const int POPULATION_SIZE = 150;
-const int GENERATIONS = 200;
+const int POPULATION_SIZE = 50;
+const int GENERATIONS = 100;
 const int FRAMES_PER_EPISODE = 3600;
 const int FRAME_SKIP = 4;
 const double MUTATION_RATE = 0.20; 
@@ -47,104 +47,140 @@ vector<TrainingData> loadData(const string& filename, int& inputSizeRef) {
     ifstream file(filename);
     string line, token;
 
-    if (!file.is_open()) {
-        return dataset; // Retorna vacio si falla
-    }
+    if (!file.is_open()) return dataset;
 
-    // Detectar tamaño de entrada basado en cabecera
+    // --- FIX 1: Detect Column Count ---
     if(getline(file, line)) {
         stringstream ss(line);
         int cols = 0;
         while(getline(ss, token, ',')) cols++;
-        inputSizeRef = cols - 1; 
+        inputSizeRef = cols - 1; // Last column is Action
     }
 
-    // Parsing de filas
+    file.clear(); 
+    file.seekg(0);
+
+    if (!isdigit(file.peek()) && file.peek() != '-') {
+        getline(file, line); 
+    }
+
+    // Parsing
     while(getline(file, line)) {
         if(line.empty()) continue;
         stringstream ss(line);
         TrainingData sample;
+        sample.inputs.reserve(inputSizeRef); // Optimization
         
-        // Normalización de inputs
+        // Inputs
         for(int i=0; i<inputSizeRef; i++) {
             getline(ss, token, ',');
-            sample.inputs.push_back(stod(token) / 255.0);
+            try {
+                double val = stod(token); 
+                sample.inputs.push_back(val);
+            } catch(...) { 
+                sample.inputs.push_back(0.0); 
+            }
         }
         
+        // Target (Action)
         getline(ss, token, ',');
-        int action = stoi(token);
-        sample.targets.resize(TOPOLOGY.back(), 0.0);
-        if(action >= 0 && action < TOPOLOGY.back()) sample.targets[action] = 1.0;
+        int action = 0;
+        try { action = stoi(token); } catch(...) { continue; }
+        
+        // Assuming TOPOLOGY is global. Ensure output layer size matches.
+        int outputLayerSize = TOPOLOGY.back();
+        sample.targets.resize(outputLayerSize, 0.0);
+        
+        if(action >= 0 && action < outputLayerSize) {
+            sample.targets[action] = 1.0;
+        }
         
         dataset.push_back(sample);
     }
+    
     return dataset;
 }
+// Optimization struct (Define this above the function or in a header)
+struct FastBitMap {
+    int byteIdx;
+    int shift;
+};
 
-double calculateRealFitness(NeuralNetwork& net, const vector<double>& genes, vector<int>& activeBytes) {
+double calculateRealFitness(NeuralNetwork& net, const vector<double>& genes, const vector<int>& activeGlobalBits) {
     net.setWeights(genes);
 
     // --- SILENCE START ---
-    // Save the original buffers of cout and cerr
     std::streambuf* originalCout = std::cout.rdbuf();
     std::streambuf* originalCerr = std::cerr.rdbuf();
-
-    // Redirect them to a "black hole" (stringstream)
     std::stringstream nullStream;
     std::cout.rdbuf(nullStream.rdbuf());
     std::cerr.rdbuf(nullStream.rdbuf());
 
-    // 2. Setup ALE (Must be local variable for OpenMP thread safety)
     ALEInterface ale;
     ale.setBool("display_screen", false); 
     ale.setBool("sound", false);
-
     ale.setInt("random_seed", 123); 
     ale.setFloat("repeat_action_probability", 0.0); 
     ale.setInt("frame_skip", FRAME_SKIP);
     ale.setInt("max_num_frames_per_episode", FRAMES_PER_EPISODE);
-
     ale.loadROM("supported/assault.bin");
 
     // --- SILENCE END ---
-    // Restore the original output so you can see your own logs (Gen 1, Best Fitness, etc.)
     std::cout.rdbuf(originalCout);
     std::cerr.rdbuf(originalCerr);
 
+    // --- PRE-CALCULATE BIT LOCATIONS (Optimization) ---
+    // Do this ONCE before the game loop to save CPU
+    std::vector<FastBitMap> inputMap;
+    inputMap.reserve(activeGlobalBits.size());
+
+    for (int globalID : activeGlobalBits) {
+        // Convert Global ID (e.g. 87) -> Byte 10, Bit 7
+        inputMap.push_back({
+            globalID / 8,       // Byte Index
+            7 - (globalID % 8)  // Bit Shift (MSB First)
+        });
+    }
+
+    // Reuse memory for inputs
+    std::vector<double> inputs;
+    inputs.reserve(inputMap.size());
+
     double totalScore = 0.0;
     int framesWithoutPoints = 0;
-    double previousScore = 0;
 
     // 3. Game Loop
     while (!ale.game_over()) {
         const ALERAM& ram = ale.getRAM();
-        vector<double> inputs;
-        inputs.reserve(activeBytes.size());
+        
+        // Clear vector but keep memory reserved
+        inputs.clear(); 
 
-        // FIXED: Use index access and NORMALIZE values
-        for (int idx : activeBytes) {
-            inputs.push_back(ram.get(idx) / 255.0);
+        // FIXED: BIT-LEVEL EXTRACTION
+        // Instead of dividing by 255, we extract the exact bit (0 or 1)
+        for (const auto& loc : inputMap) {
+            int byteVal = ram.get(loc.byteIdx);
+            double bit = (byteVal >> loc.shift) & 1; // Extracts 0 or 1
+            inputs.push_back(bit);
         }
 
+        // Feed Forward
         vector<double> output = net.feedForward(inputs);
 
-        // Select action with highest probability
+        // Select action
         auto maxIt = max_element(output.begin(), output.end());
         int actionIndex = distance(output.begin(), maxIt);
         
-        // Cast to Action enum
         double reward = ale.act(static_cast<Action>(actionIndex));
-        
         totalScore += reward;
 
-        // OPTIMIZACIÓN: Kill Switch (Si no gana puntos en mucho tiempo)
+        // Kill Switch
         if (reward > 0) {
-            framesWithoutPoints = 0; // ¡Ganó puntos! Reiniciamos contador
+            framesWithoutPoints = 0; 
         } else {
             framesWithoutPoints++;
         }
         
-        // Si pasan 400 'actuaciones' (aprox 25-30 segs de juego real) sin puntos, fuera.
         if (framesWithoutPoints > 400) break;
     }
 
@@ -205,69 +241,108 @@ stringstream getTimeStmp() {
 }
 
 vector<int> getActiveBytes() {
-    // Carga de Máscara (Feature Selection)
-    std::vector<int> activeBytes;
-    std::ifstream maskFile("mask.txt");
-    if (maskFile.is_open()) {
-        int idx;
-        while (maskFile >> idx) activeBytes.push_back(idx);
-        maskFile.close();
+    vector<int> active;
+    ifstream file("dat/bit_mask.txt"); // Reads BIT mask
+    int val;
+    if(file.is_open()) {
+        while(file >> val) active.push_back(val);
+        file.close();
     } else {
-        for (int i = 0; i < 128; i++) activeBytes.push_back(i);
-        std::cout << "[WARN] Usando máscara default (128 bytes)." << std::endl;
+        // Fallback: Use all 1024 bits if no mask found
+        for(int i=0; i<1024; i++) active.push_back(i);
+        cerr << "[WARN] 'bit_mask.txt' not found. Using full 1024-bit RAM." << endl;
     }
-    return activeBytes;
+    return active;
 }
-
 int main(int argc, char** argv) {
     // --- NUEVA LÓGICA DE INTERACCIÓN CON EL USUARIO ---
     string filename;
     vector<TrainingData> data;
-    
+    vector<int> activeGlobalBits; // For Real Fitness (Bit Mask)
+    int detectedInputSize = 0;
+
     cout << "========================================" << endl;
     cout << "      ENTRENAMIENTO GENETICO (GA)       " << endl;
     cout << "========================================" << endl;
-    if(!REAL_FITNESS) {
-        cout << "Introduce el nombre del dataset a utilizar:" << endl;
-        cout << "(Deja vacio y pulsa ENTER para usar 'dataset_optimized.csv'): ";
-        // Capturar entrada del usuario
-        getline(cin, filename);
-        // Asignar valor por defecto si está vacío
-        if (filename.empty()) {
-            filename = "dataset_optimized.csv";
-            cout << "-> Usando archivo por defecto: " << filename << endl;
-        } else cout << "-> Buscando archivo: " << filename << endl;
 
-        int inputSize = 0;
-        data = loadData(filename, inputSize);
+    // --- 1. SETUP DATA SOURCE ---
+    if(!REAL_FITNESS) {
+        // STATIC TRAINING (Use dataset)
+        cout << "Introduce el dataset BIT-LEVEL a utilizar:" << endl;
+        cout << "(Deja vacio y pulsa ENTER para usar 'dataset_bin_optimized.csv'): ";
+        getline(cin, filename);
+        if (filename.empty()) filename = "dataset_bin_optimized.csv";
+
+        cout << "-> Buscando archivo: " << filename << endl;
+        
+        // This function now handles 0/1 bits correctly (no division by 255)
+        data = loadData(filename, detectedInputSize); 
 
         if(data.empty()) {
-            cerr << "[ERROR] No se pudo cargar el dataset: '" << filename << "'" << endl;
-            cerr << "Verifica que el archivo existe y tiene el formato correcto." << endl;
-            return -1;}
-        cout << "Dataset cargado (" << data.size() << " muestras). Input Size: " << inputSize << endl;
+            cerr << "[ERROR] No se pudo cargar el dataset." << endl;
+            return -1;
+        }
+        cout << "Dataset cargado (" << data.size() << " muestras). Input Size: " << detectedInputSize << endl;
+    } 
+    else {
+        // REAL FITNESS (Use Mask)
+        activeGlobalBits = getActiveBytes(); // Now reads 'bit_mask.txt'
+        detectedInputSize = activeGlobalBits.size();
+        cout << "Modo REAL FITNESS activo." << endl;
+        cout << "Input Mask cargada: " << detectedInputSize << " bits activos." << endl;
     }
+
+    // --- 2. TOPOLOGY SETUP ---
+    vector<int> topology {detectedInputSize}; // Update local variable
+    topology.insert(topology.end(), TOPOLOGY.begin(), TOPOLOGY.end());
+
+    // --- 3. WARM START ---
     string warmStartFile;
     bool useWarmStart = false;
-    // Inicialización de Población
-    
+    NeuralNetwork* referenceNN = nullptr;
+
     if (WARM_START) {
         cout << "\n--- WARM START (Transfer Learning) ---" << endl;
-        cout << "Introduce nombre de cerebro para iniciar (Enter = 'brain.txt'): ";
+        cout << "Introduce nombre de cerebro para iniciar (Enter = 'dat/brain.txt'): ";
         getline(cin, warmStartFile);
-        if (warmStartFile.empty()) warmStartFile = "brain.txt";
-            if (ifstream(warmStartFile)) {
-            useWarmStart = true;
-            cout << ">>> WARM START ACTIVO: Iniciando poblacion basada en " << warmStartFile << endl;
+        if (warmStartFile.empty()) warmStartFile = "dat/brain.txt";
+        
+        if (ifstream(warmStartFile)) {
+            cout << ">>> Intentando cargar: " << warmStartFile << endl;
+            try {
+                // Try to load existing brain
+                referenceNN = new NeuralNetwork(warmStartFile);
+                
+                // Validate topology match
+                if(referenceNN->getInputSize() != detectedInputSize) {
+                    cerr << "[ERROR] Topology Mismatch! Brain has " << referenceNN->getInputSize() 
+                         << " inputs, but we need " << detectedInputSize << "." << endl;
+                    cerr << "Starting from SCRATCH instead." << endl;
+                    delete referenceNN;
+                    referenceNN = new NeuralNetwork(topology);
+                } else {
+                    useWarmStart = true;
+                    cout << ">>> WARM START EXITOSO." << endl;
+                }
+            } catch (...) {
+                cerr << "[ERROR] Corrupt brain file. Starting from scratch." << endl;
+                referenceNN = new NeuralNetwork(topology);
+            }
         } else {
-            cout << ">>> COLD START: No se encontro " << warmStartFile << ". Iniciando desde cero." << endl;
+            cout << ">>> COLD START: No se encontro archivo. Iniciando desde cero." << endl;
+            referenceNN = new NeuralNetwork(topology);
         }
-    } 
-    NeuralNetwork dummyNN(WARM_START ? NeuralNetwork(warmStartFile) : NeuralNetwork(TOPOLOGY));
+    } else {
+        referenceNN = new NeuralNetwork(topology);
+    }
 
+    NeuralNetwork dummyNN = *referenceNN; // Copy for structure
     int genomeSize = dummyNN.getWeightCount();
+    
     cout << "Iniciando proceso evolutivo..." << endl;
+    cout << "Poblacion: " << POPULATION_SIZE << " | Genes por individuo: " << genomeSize << endl;
 
+    // --- 4. POPULATION INIT ---
     vector<Genome> population(POPULATION_SIZE);
     mt19937 rng(time(0));
     uniform_real_distribution<> distWeight(-1.0, 1.0);
@@ -277,88 +352,84 @@ int main(int argc, char** argv) {
 
     for(int i = 0; i < POPULATION_SIZE; i++) {
         population[i].genes.resize(genomeSize);
-        population[i].fitness = -9999; // Reset fitness
+        population[i].fitness = -9999; 
 
         if (useWarmStart) {
-            // ELITISM: El individuo 0 es una COPIA EXACTA
             if (i == 0) {
+                // Elitism: Copy exact best brain
                 population[i].genes = baseGenes;
-            } 
-            // DIVERSITY: El resto son clones con mutaciones (para explorar mejoras)
-            else {
+            } else {
+                // Diversity: Mutated clones
                 for(size_t k=0; k < genomeSize; k++) {
                     double gene = baseGenes[k];
-                    // Aplicar mutación suave al gen base
-                    if ((rand() % 100) < 30) { // 30% chance de mutar cada peso
-                        gene += distMutation(rng);
-                    }
+                    if ((rand() % 100) < 30) gene += distMutation(rng);
                     population[i].genes[k] = gene;
                 }
             }
         } 
         else {
-            // COLD START: Ruido aleatorio total
+            // Cold Start: Random Xavier-ish weights
             for(double &g : population[i].genes) g = distWeight(rng);
         }
     }
+    
+    // Clean up reference pointer
+    delete referenceNN;
 
-    vector<int> activeBytes;
-    if (REAL_FITNESS) {
-        activeBytes = getActiveBytes();
-        cout << "Mascara cargada: " << activeBytes.size() << " inputs." << endl;
-    }
-
-    // Bucle Principal de Evolución
+    // --- 5. EVOLUTION LOOP ---
     for(int gen = 1; gen <= GENERATIONS; ++gen) {
         
-        // Evaluación paralela de fitness
+        // Parallel Evaluation
         #pragma omp parallel for
         for(int i=0; i<POPULATION_SIZE; i++) {
-            NeuralNetwork tempNN(dummyNN.getTopology());
+            // Create temp NN with correct structure
+            NeuralNetwork tempNN(dummyNN.getTopology()); 
+            
             if (REAL_FITNESS) 
-                population[i].fitness = calculateRealFitness(tempNN, population[i].genes, activeBytes);
+                population[i].fitness = calculateRealFitness(tempNN, population[i].genes, activeGlobalBits);
             else
                 population[i].fitness = calculateFitness(tempNN, population[i].genes, data);
         }
 
-        // Selección (Ordenamiento descendente por fitness)
+        // Sort by Fitness
         sort(population.begin(), population.end(), [](const Genome& a, const Genome& b) {
             return a.fitness > b.fitness;
         });
 
+        // Logging
         if(gen % 10 == 0 || gen == 1)
             cout << "Gen " << gen << " | Best Fitness: " << population[0].fitness << endl;
 
+        // Auto-Save Checkpoint
         if(gen % 50 == 0) {
             dummyNN.setWeights(population[0].genes);
-            dummyNN.save("brain_ga.txt"); 
+            dummyNN.save("dat/brain_ga.txt"); 
         }
 
-        // Generación de nueva población
+        // --- NEW POPULATION GENERATION ---
         vector<Genome> newPop;
         newPop.reserve(POPULATION_SIZE);
 
-        // Elitismo
+        // Elitism (Keep best)
         for(int i=0; i<ELITISM_COUNT; i++) newPop.push_back(population[i]);
 
-        // Distribuciones para operadores genéticos
-        uniform_int_distribution<> distIndex(0, POPULATION_SIZE / 2); // Selección de padres
+        // Genetic Operators
+        uniform_int_distribution<> distIndex(0, POPULATION_SIZE / 2); // Pick parents from top 50%
         uniform_real_distribution<> distMut(0.0, 1.0);
         normal_distribution<> distMutVal(0.0, MUTATION_STRENGTH);
 
-        // Crossover y Mutación
         while(newPop.size() < POPULATION_SIZE) {
             const Genome& p1 = population[distIndex(rng)];
             const Genome& p2 = population[distIndex(rng)];
             Genome child;
             child.genes = p1.genes; 
 
-            // Crossover Uniforme
+            // Uniform Crossover
             for(size_t k=0; k<child.genes.size(); k++) {
                 if(distMut(rng) > 0.5) child.genes[k] = p2.genes[k];
             }
 
-            // Mutación
+            // Mutation
             for(double &g : child.genes) {
                 if(distMut(rng) < MUTATION_RATE) g += distMutVal(rng);
             }
@@ -367,15 +438,14 @@ int main(int argc, char** argv) {
         population = newPop;
     }
     
-    // Guardado final del mejor modelo
+    // --- 6. FINAL SAVE ---
     dummyNN.setWeights(population[0].genes);
 
     stringstream timestamp = getTimeStmp();
-
-    string outputFilename = MODEL_PREFIX + timestamp.str() + ".txt";
+    string outputFilename = "dat/" + MODEL_PREFIX + timestamp.str() + ".txt";
 
     if (TIMESTAMPED_MODELS) dummyNN.save(outputFilename);
-    dummyNN.save("brain.txt");
+    dummyNN.save("dat/brain.txt"); // Overwrite default for easy play
 
     cout << "Entrenamiento finalizado." << endl;
     return 0;
