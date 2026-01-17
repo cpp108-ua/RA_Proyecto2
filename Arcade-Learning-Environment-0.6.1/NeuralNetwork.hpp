@@ -88,9 +88,6 @@ public:
         if(!load(filename)) {
             throw std::runtime_error("Failed to load brain: " + filename);
         }
-        // Default activations (since file doesn't store them)
-        hiddenActivation = RELU;
-        outputActivation = SIGMOID;
     }
 
     // --- INITIALIZATION ---
@@ -236,6 +233,10 @@ public:
         for(int t : topology) file << t << " ";
         file << "\n";
 
+        // Header: Activation Functions
+        file << static_cast<int>(hiddenActivation) << " " 
+             << static_cast<int>(outputActivation) << "\n";
+
         // Body: All weights flat
         file.precision(10);
         for(double w : weights) file << w << " ";
@@ -253,6 +254,11 @@ public:
         topology.resize(numLayers);
         int totalNodes = 0;
         for(int i=0; i<numLayers; i++) file >> topology[i];
+
+        int hiddenAct, outputAct;
+        if(!(file >> hiddenAct >> outputAct)) return false;
+        hiddenActivation = static_cast<ActivationType>(hiddenAct);
+        outputActivation = static_cast<ActivationType>(outputAct);
 
         // Re-allocate memory based on loaded topology
         int totalWeights = 0;
