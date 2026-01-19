@@ -19,6 +19,8 @@ const bool TIMESTAMPED_MODELS = true;
 // --- HIPERPARÁMETROS ---
 const double VALIDATION_SPLIT = 0.2; 
 const int EARLY_STOPPING_PATIENCE = 50;
+const int LEARNING_RATE = 0.01;
+const int WEIGHT_DECAY = 0.00001;
 const int EPOCHS = 1000;            
 const vector<int> TOPOLOGY = {64, 32, 18};
 
@@ -210,6 +212,7 @@ int main(int argc, char** argv) {
     vector<int> topology = {inputSize};
     topology.insert(topology.end(), TOPOLOGY.begin(), TOPOLOGY.end());
     NeuralNetwork nn(topology);
+    nn.setHyperparameters(LEARNING_RATE, WEIGHT_DECAY);
     
     cout << "Entrenando (1000 Epochs)..." << endl;
 
