@@ -18,7 +18,7 @@ const bool TIMESTAMPED_MODELS = true;
 
 // --- HIPERPARÁMETROS ---
 const double VALIDATION_SPLIT = 0.2; 
-const int EARLY_STOPPING_PATIENCE = 150;
+const int EARLY_STOPPING_PATIENCE = 50;
 const int EPOCHS = 1000;            
 const vector<int> TOPOLOGY = {64, 32, 18};
 
@@ -213,6 +213,8 @@ int main(int argc, char** argv) {
     
     cout << "Entrenando (1000 Epochs)..." << endl;
 
+    time_t startTime = time(0);
+
     // VARIABLES FOR EARLY STOPPING
     double bestValidationError = 1e9;
     int patience = EARLY_STOPPING_PATIENCE;     // How many epochs before stopping
@@ -280,8 +282,9 @@ int main(int argc, char** argv) {
             break;
         }
     }
-
+    time_t endTime = time(0);
     cout << "\n[DONE] Entrenamiento finalizado." << endl;
+    cout << "Tiempo de entrenamiento: " << setprecision(2) << difftime(endTime, startTime) << " segundos." << endl;
     cout << "Pesos se guardarán en: " << outputFilename << endl;
 
     return 0;
